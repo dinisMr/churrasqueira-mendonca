@@ -10,7 +10,7 @@ import Rodape from '../components/Rodape.astro';
 import { info } from '../lib/catalogo';
 
 const titulo = `${info.nome} — Churrasco e take-away em ${info.morada.localidade}, ${info.morada.concelho}`;
-const descricao = `Frango no churrasco, entrecosto, choco frito e menus familiares para levar. ${info.morada.rua}, ${info.morada.localidade}. Ligue ${info.telefone_display}.`;
+const descricao = `Frango no churrasco, entrecosto, choco frito e menus familiares para levar. ${info.morada.rua}, ${info.morada.localidade}. Telefone: ${info.telefone_display}.`;
 ---
 
 <Base titulo={titulo} descricao={descricao}>
