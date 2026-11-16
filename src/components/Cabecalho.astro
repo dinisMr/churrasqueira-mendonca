@@ -23,7 +23,7 @@ const ligacoes = [
     <a href="#topo" class="flex items-center gap-2.5" aria-label={`${info.nome} — ${t.nav.inicio}`}>
       <Image src={logo} alt="" width={44} height={44} densities={[1, 2]} loading="eager" class="h-11 w-11 rounded-full" />
       <span class="font-display text-lg leading-none font-semibold tracking-tight">
-        <span class="block text-[0.62rem] font-sans font-bold tracking-[0.22em] text-brasa uppercase">
+        <span class="block text-[0.62rem] font-sans font-bold tracking-[0.22em] text-galo uppercase">
           Churrasqueira
         </span>
         Mendonça
@@ -35,7 +35,7 @@ const ligacoes = [
         {
           ligacoes.map((l) => (
             <li>
-              <a href={l.href} class="py-2 transition-colors hover:text-brasa">
+              <a href={l.href} class="py-2 transition-colors hover:text-galo">
                 {l.texto}
               </a>
             </li>
@@ -58,7 +58,7 @@ const ligacoes = [
                 aria-current={l.codigo === lingua ? 'true' : undefined}
                 class:list={[
                   'block rounded-full px-2.5 py-1.5 transition-colors',
-                  l.codigo === lingua ? 'bg-creme text-carvao' : 'text-creme/80 hover:text-brasa',
+                  l.codigo === lingua ? 'bg-creme text-carvao' : 'text-creme/80 hover:text-galo',
                 ]}
               >
                 {l.rotulo}
