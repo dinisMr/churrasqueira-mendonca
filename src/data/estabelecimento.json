@@ -19,9 +19,17 @@
   "google_maps": "https://www.google.com/maps/search/?api=1&query=Churrasqueira+Mendon%C3%A7a%2C+Rua+Movimento+das+For%C3%A7as+Armadas+33A%2C+Amora",
 
   "horario": {
-    "confirmado": false,
+    "confirmado": true,
     "texto_provisorio": "Consulte-nos pelo telefone",
-    "dias": []
+    "dias": [
+      { "dia": "Segunda-feira", "abre": "", "fecha": "" },
+      { "dia": "Terça-feira", "abre": "11:00", "fecha": "21:30" },
+      { "dia": "Quarta-feira", "abre": "10:30", "fecha": "21:30" },
+      { "dia": "Quinta-feira", "abre": "10:30", "fecha": "21:30" },
+      { "dia": "Sexta-feira", "abre": "10:30", "fecha": "21:45" },
+      { "dia": "Sábado", "abre": "10:30", "fecha": "21:30" },
+      { "dia": "Domingo", "abre": "10:30", "fecha": "14:45" }
+    ]
   },
 
   "pagamentos": ["Dinheiro", "Multibanco", "MB WAY"],

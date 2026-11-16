@@ -109,3 +109,19 @@ export { info };
 export const telHref = `tel:${info.telefone_e164}`;
 export const moradaLinha1 = info.morada.rua;
 export const moradaLinha2 = `${info.morada.codigo_postal} ${info.morada.localidade}, ${info.morada.concelho}`;
+
+export interface DiaHorario {
+  dia: string;
+  /** "HH:MM"; vazio em ambos = encerrado. */
+  abre: string;
+  fecha: string;
+}
+
+/** Horário a mostrar; vazio enquanto "confirmado" for false. */
+export const horario: DiaHorario[] = info.horario.confirmado
+  ? (info.horario.dias as DiaHorario[])
+  : [];
+
+export function textoHoras(d: DiaHorario): string {
+  return d.abre && d.fecha ? `${d.abre}–${d.fecha}` : 'Encerrado';
+}

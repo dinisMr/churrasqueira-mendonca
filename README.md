@@ -61,19 +61,9 @@ A ordem, os nomes e as notas das **categorias** estão em `src/lib/catalogo.ts`
 Em **`src/data/estabelecimento.json`**:
 
 - `telefone_display` / `telefone_e164`, `morada`, `instagram`, `google_maps`.
-- **Horário:** está por confirmar, por isso o site mostra "Consulte-nos pelo
-  telefone". Depois de confirmado:
-
-  ```json
-  "horario": {
-    "confirmado": true,
-    "texto_provisorio": "Consulte-nos pelo telefone",
-    "dias": [
-      { "dia": "Segunda", "horas": "Encerrado" },
-      { "dia": "Terça a sábado", "horas": "10:30–21:30" }
-    ]
-  }
-  ```
+- **Horário:** lista `horario.dias`, um bloco por dia com `abre` e `fecha`
+  (`"HH:MM"`). Deixar ambos vazios (`""`) mostra "Encerrado". Com
+  `"confirmado": false` o site volta a mostrar "Consulte-nos pelo telefone".
 
 - `pagamentos`: lista mostrada em "Pagamento na loja" (lista vazia esconde o bloco).
 - `plataformas_entrega.mostrar`: `false` esconde as ligações Uber Eats/Glovo.

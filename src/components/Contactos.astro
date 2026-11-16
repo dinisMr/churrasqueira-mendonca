@@ -1,13 +1,8 @@
 ---
 import Icone from './Icone.astro';
-import { info, telHref, moradaLinha1, moradaLinha2 } from '../lib/catalogo';
+import { info, telHref, moradaLinha1, moradaLinha2, horario, textoHoras } from '../lib/catalogo';
 
-interface DiaHorario {
-  dia: string;
-  horas: string;
-}
-const horarioConfirmado = info.horario.confirmado && info.horario.dias.length > 0;
-const diasHorario = info.horario.dias as DiaHorario[];
+const horarioConfirmado = horario.length > 0;
 const entrega = info.plataformas_entrega;
 const utilizadorInstagram =
   '@' + info.instagram.replace(/\/+$/, '').split('/').pop();
@@ -66,10 +61,10 @@ const utilizadorInstagram =
           {
             horarioConfirmado ? (
               <dl class="mt-2 grid grid-cols-[auto_1fr] gap-x-6 gap-y-1">
-                {diasHorario.map((d) => (
+                {horario.map((d) => (
                   <>
                     <dt class="font-semibold">{d.dia}</dt>
-                    <dd class="text-tinta-suave">{d.horas}</dd>
+                    <dd class="text-tinta-suave tabular-nums">{textoHoras(d)}</dd>
                   </>
                 ))}
               </dl>
