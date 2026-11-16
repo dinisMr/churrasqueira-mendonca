@@ -26,7 +26,6 @@ const pt = {
     principal: 'Navegação principal',
     rapida: 'Navegação rápida',
     inicio: 'início',
-    ligar: 'Ligar',
     lingua: 'Língua',
   },
   hero: {
@@ -35,7 +34,7 @@ const pt = {
     texto: (nome: string) =>
       `Frango no churrasco, entrecosto, choco frito e menus completos para levar para casa, na ${nome}.`,
     verEmenta: 'Ver ementa',
-    contactos: 'Contactos e localização',
+    contactos: 'Localização',
     takeaway: 'Take-away',
   },
   ementa: {
@@ -111,7 +110,6 @@ const en: typeof pt = {
     principal: 'Main navigation',
     rapida: 'Quick navigation',
     inicio: 'home',
-    ligar: 'Call',
     lingua: 'Language',
   },
   hero: {
@@ -120,7 +118,7 @@ const en: typeof pt = {
     texto: (nome) =>
       `Barbecued chicken, pork ribs, fried cuttlefish and complete menus to take home, at ${nome}.`,
     verEmenta: 'See the menu',
-    contactos: 'Contact and location',
+    contactos: 'Location',
     takeaway: 'Takeaway',
   },
   ementa: {

@@ -1,8 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import Icone from './Icone.astro';
 import logo from '../assets/logo.png';
-import { info, telHref } from '../lib/catalogo';
+import { info } from '../lib/catalogo';
 import { textos, linguas, type Lingua } from '../i18n/textos';
 
 interface Props {
@@ -67,11 +66,6 @@ const ligacoes = [
           ))
         }
       </ul>
-    <a href={telHref} class="botao botao-cobre min-h-10! min-w-10 px-0! py-2! text-sm sm:px-4!">
-      <Icone nome="telefone" class="h-4 w-4" />
-      <span class="hidden sm:inline">{info.telefone_display}</span>
-      <span class="sr-only">{t.nav.ligar}</span>
-    </a>
     </div>
   </div>
 
