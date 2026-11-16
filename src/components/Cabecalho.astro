@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import Icone from './Icone.astro';
+import logo from '../assets/logo.png';
 import { info, telHref } from '../lib/catalogo';
 
 const ligacoes = [
@@ -12,9 +14,7 @@ const ligacoes = [
 <header class="sticky top-0 z-50 border-b border-white/10 bg-carvao/95 text-creme backdrop-blur">
   <div class="contentor flex h-16 items-center justify-between gap-4">
     <a href="#topo" class="flex items-center gap-2.5" aria-label={`${info.nome} — início`}>
-      <span class="grid h-9 w-9 place-items-center rounded-full bg-cobre-forte text-creme">
-        <Icone nome="chama" class="h-5 w-5" />
-      </span>
+      <Image src={logo} alt="" width={44} height={44} densities={[1, 2]} loading="eager" class="h-11 w-11 rounded-full" />
       <span class="font-display text-lg leading-none font-semibold tracking-tight">
         <span class="block text-[0.62rem] font-sans font-bold tracking-[0.22em] text-brasa uppercase">
           Churrasqueira
