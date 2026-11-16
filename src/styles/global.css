@@ -130,9 +130,9 @@
     transform: translateY(-0.35em);
   }
 
-  /* Preço: número no dourado do logótipo. */
+  /* Preço: escuro, para se ler bem em fundo claro; o dourado fica para os fundos escuros. */
   .preco {
-    color: var(--color-galo);
+    color: var(--color-tinta);
     font-family: var(--font-display);
     font-weight: 700;
     white-space: nowrap;
