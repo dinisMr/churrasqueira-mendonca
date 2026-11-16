@@ -1,0 +1,142 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces/wght.css';
+
+@theme {
+  --color-carvao: #212121;
+  --color-carvao-suave: #2c2a28;
+  --color-creme: #f8f4eb;
+  --color-creme-escuro: #efe8d8;
+  --color-papel: #fffdf8;
+  /* Cobre da marca: decoração e texto grande sobre carvão. */
+  --color-cobre: #bb5b32;
+  /* Cobre escurecido: texto e botões com contraste AA sobre creme/branco. */
+  --color-cobre-forte: #9a4423;
+  --color-brasa: #e58a55;
+  --color-verde: #3f6147;
+  --color-tinta: #2a2623;
+  --color-tinta-suave: #5c544d;
+  --color-linha: #dfd5c1;
+
+  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-creme);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brasa);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .contentor {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .contentor {
+      padding-inline: 2rem;
+    }
+  }
+
+  .sobretitulo {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 700;
+    line-height: 1.2;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease,
+      transform 0.15s ease;
+  }
+  .botao:active {
+    transform: translateY(1px);
+  }
+  .botao-cobre {
+    background-color: var(--color-cobre-forte);
+    color: #fff;
+  }
+  .botao-cobre:hover {
+    background-color: #833a1d;
+  }
+  .botao-claro {
+    border: 1.5px solid rgb(248 244 235 / 0.55);
+    color: var(--color-creme);
+  }
+  .botao-claro:hover {
+    background-color: var(--color-creme);
+    color: var(--color-carvao);
+  }
+  .botao-contorno {
+    border: 1.5px solid var(--color-tinta);
+    color: var(--color-tinta);
+  }
+  .botao-contorno:hover {
+    background-color: var(--color-tinta);
+    color: var(--color-creme);
+  }
+
+  /* Linha pontilhada entre o nome do prato e o preço. */
+  .pontilhado {
+    flex: 1 1 1.5rem;
+    min-width: 1.5rem;
+    border-bottom: 2px dotted var(--color-linha);
+    transform: translateY(-0.35em);
+  }
+
+  .sem-barra {
+    scrollbar-width: none;
+  }
+  .sem-barra::-webkit-scrollbar {
+    display: none;
+  }
+}

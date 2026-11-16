@@ -1,0 +1,60 @@
+---
+import Icone from './Icone.astro';
+import { info, telHref, moradaLinha1, moradaLinha2 } from '../lib/catalogo';
+const ano = new Date().getFullYear();
+---
+
+<footer class="bg-carvao pt-12 pb-28 text-creme md:pb-12">
+  <div class="contentor flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+    <div>
+      <p class="font-display text-2xl font-semibold">{info.nome}</p>
+      <address class="mt-2 text-sm text-creme/75 not-italic">
+        {moradaLinha1}<br />
+        {moradaLinha2}
+      </address>
+    </div>
+    <ul class="flex flex-col gap-3 text-sm font-semibold">
+      <li>
+        <a href={telHref} class="flex items-center gap-2 hover:text-brasa">
+          <Icone nome="telefone" class="h-4 w-4 text-brasa" />
+          {info.telefone_display}
+        </a>
+      </li>
+      <li>
+        <a
+          href={info.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 hover:text-brasa"
+        >
+          <Icone nome="instagram" class="h-4 w-4 text-brasa" />
+          Instagram
+        </a>
+      </li>
+      <li>
+        <a
+          href={info.google_maps}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 hover:text-brasa"
+        >
+          <Icone nome="mapa" class="h-4 w-4 text-brasa" />
+          Como chegar
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="contentor mt-10 border-t border-white/10 pt-6 text-xs text-creme/65">
+    <p>
+      © {ano} {info.nome}. Preços de balcão com IVA incluído, sujeitos a alteração sem aviso prévio.
+    </p>
+  </div>
+</footer>
+
+<!-- Botão de chamada fixo no telemóvel -->
+<div class="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-carvao/95 p-3 backdrop-blur md:hidden">
+  <a href={telHref} class="botao botao-cobre w-full">
+    <Icone nome="telefone" class="h-4 w-4" />
+    Ligar {info.telefone_display}
+  </a>
+</div>

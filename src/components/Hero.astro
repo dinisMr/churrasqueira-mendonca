@@ -1,0 +1,68 @@
+---
+import Icone from './Icone.astro';
+import { info, telHref, moradaLinha1 } from '../lib/catalogo';
+---
+
+<section id="topo" class="relative isolate overflow-hidden bg-carvao text-creme">
+  <!-- Brasas: fundo decorativo em CSS, sem imagens a descarregar. -->
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-10"
+    style="background:
+      radial-gradient(60rem 28rem at 85% 110%, rgb(187 91 50 / 0.55), transparent 65%),
+      radial-gradient(34rem 20rem at 8% 105%, rgb(229 138 85 / 0.22), transparent 70%),
+      radial-gradient(40rem 30rem at 50% -20%, rgb(255 255 255 / 0.05), transparent 70%);"
+  >
+  </div>
+  <!-- Grelha -->
+  <div
+    aria-hidden="true"
+    class="absolute inset-x-0 bottom-0 -z-10 h-40 opacity-[0.13]"
+    style="background-image: repeating-linear-gradient(90deg, #f8f4eb 0 3px, transparent 3px 34px);
+      mask-image: linear-gradient(to top, #000, transparent);
+      -webkit-mask-image: linear-gradient(to top, #000, transparent);"
+  >
+  </div>
+
+  <div class="contentor py-20 md:py-32">
+    <p class="sobretitulo flex items-center gap-3 text-brasa">
+      <span class="h-px w-8 bg-brasa"></span>
+      {info.morada.localidade} · {info.morada.concelho}
+    </p>
+
+    <h1 class="mt-5 max-w-3xl text-[2.6rem] leading-[1.05] font-semibold tracking-tight sm:text-6xl md:text-7xl">
+      O sabor do churrasco, <span class="text-brasa">perto de si</span>
+    </h1>
+
+    <p class="mt-6 max-w-xl text-lg text-creme/85">
+      Frango no churrasco, entrecosto, choco frito e menus completos para levar para casa, na{' '}
+      {info.nome}.
+    </p>
+
+    <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+      <a href="#ementa" class="botao botao-cobre">
+        Ver ementa
+        <Icone nome="seta" class="h-4 w-4" />
+      </a>
+      <a href={telHref} class="botao botao-claro">
+        <Icone nome="telefone" class="h-4 w-4" />
+        Ligar para encomendar
+      </a>
+    </div>
+
+    <ul class="mt-12 flex flex-col gap-x-8 gap-y-3 text-sm text-creme/85 sm:flex-row sm:flex-wrap">
+      <li class="flex items-center gap-2">
+        <Icone nome="saco" class="h-4 w-4 text-brasa" />
+        Take-away
+      </li>
+      <li class="flex items-center gap-2">
+        <Icone nome="mapa" class="h-4 w-4 text-brasa" />
+        {moradaLinha1}, {info.morada.localidade}
+      </li>
+      <li class="flex items-center gap-2">
+        <Icone nome="telefone" class="h-4 w-4 text-brasa" />
+        {info.telefone_display}
+      </li>
+    </ul>
+  </div>
+</section>

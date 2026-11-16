@@ -1,0 +1,92 @@
+---
+import '../styles/global.css';
+import { info, ementa, precoPublicavel } from '../lib/catalogo';
+
+interface Props {
+  titulo: string;
+  descricao: string;
+}
+const { titulo, descricao } = Astro.props;
+
+// Só há URL absoluto quando "url_site" está preenchido em estabelecimento.json.
+const urlCanonico = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : null;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: info.nome,
+  ...(urlCanonico ? { url: urlCanonico, '@id': `${urlCanonico}#restaurante` } : {}),
+  telephone: info.telefone_e164,
+  servesCuisine: ['Churrasco', 'Portuguesa'],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: info.morada.rua,
+    postalCode: info.morada.codigo_postal,
+    addressLocality: info.morada.localidade,
+    addressRegion: info.morada.concelho,
+    addressCountry: info.morada.pais,
+  },
+  areaServed: [info.morada.localidade, info.morada.concelho],
+  hasMap: info.google_maps,
+  sameAs: [info.instagram],
+  ...(info.pagamentos.length ? { paymentAccepted: info.pagamentos.join(', ') } : {}),
+  hasMenu: {
+    '@type': 'Menu',
+    inLanguage: 'pt-PT',
+    hasMenuSection: ementa.map((c) => ({
+      '@type': 'MenuSection',
+      name: c.nome,
+      hasMenuItem: c.produtos.map((p) => {
+        const preco = precoPublicavel(p);
+        return {
+          '@type': 'MenuItem',
+          name: p.nome,
+          ...(p.descricao ? { description: p.descricao } : {}),
+          ...(preco !== null
+            ? {
+                offers: {
+                  '@type': 'Offer',
+                  price: preco.toFixed(2),
+                  priceCurrency: 'EUR',
+                },
+              }
+            : {}),
+        };
+      }),
+    })),
+  },
+};
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descricao} />
+    <meta name="theme-color" content="#212121" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {urlCanonico && <link rel="canonical" href={urlCanonico} />}
+
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:site_name" content={info.nome} />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descricao} />
+    {urlCanonico && <meta property="og:url" content={urlCanonico} />}
+    <meta name="twitter:card" content="summary" />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a
+      href="#conteudo"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-md focus:bg-papel focus:px-4 focus:py-2 focus:font-semibold focus:text-tinta"
+    >
+      Saltar para o conteúdo
+    </a>
+    <slot />
+  </body>
+</html>

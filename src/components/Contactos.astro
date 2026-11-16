@@ -1,0 +1,143 @@
+---
+import Icone from './Icone.astro';
+import { info, telHref, moradaLinha1, moradaLinha2 } from '../lib/catalogo';
+
+interface DiaHorario {
+  dia: string;
+  horas: string;
+}
+const horarioConfirmado = info.horario.confirmado && info.horario.dias.length > 0;
+const diasHorario = info.horario.dias as DiaHorario[];
+const entrega = info.plataformas_entrega;
+const utilizadorInstagram =
+  '@' + info.instagram.replace(/\/+$/, '').split('/').pop();
+---
+
+<section id="contactos" class="py-16 md:py-24">
+  <div class="contentor">
+    <p class="sobretitulo text-cobre-forte">Contactos e localização</p>
+    <h2 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Onde estamos</h2>
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      <!-- Telefone -->
+      <div class="flex flex-col rounded-2xl bg-carvao p-7 text-creme">
+        <Icone nome="telefone" class="h-6 w-6 text-brasa" />
+        <h3 class="mt-4 text-2xl font-semibold">Telefone</h3>
+        <p class="mt-1 text-creme/80">Encomendas e informações.</p>
+        <a
+          href={telHref}
+          class="mt-4 font-display text-4xl font-semibold tracking-tight text-creme hover:text-brasa"
+        >
+          {info.telefone_display}
+        </a>
+        <a href={telHref} class="botao botao-cobre mt-6 self-start lg:mt-auto">
+          <Icone nome="telefone" class="h-4 w-4" />
+          Telefonar agora
+        </a>
+      </div>
+
+      <!-- Morada -->
+      <div class="flex flex-col rounded-2xl border border-linha bg-papel p-7">
+        <Icone nome="mapa" class="h-6 w-6 text-cobre-forte" />
+        <h3 class="mt-4 text-2xl font-semibold">Morada</h3>
+        <address class="mt-2 text-lg leading-snug not-italic">
+          {moradaLinha1}<br />
+          {moradaLinha2}
+        </address>
+        <p class="mt-1 text-sm text-tinta-suave">Zona das {info.morada.zona}</p>
+        <a
+          href={info.google_maps}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="botao botao-contorno mt-6 self-start lg:mt-auto"
+        >
+          Abrir no Google Maps
+          <Icone nome="externo" class="h-4 w-4" />
+        </a>
+      </div>
+
+      <!-- Horário, pagamentos, Instagram -->
+      <div class="flex flex-col gap-6 rounded-2xl border border-linha bg-papel p-7">
+        <div>
+          <h3 class="flex items-center gap-2 text-xl font-semibold">
+            <Icone nome="relogio" class="h-5 w-5 text-cobre-forte" />
+            Horário
+          </h3>
+          {
+            horarioConfirmado ? (
+              <dl class="mt-2 grid grid-cols-[auto_1fr] gap-x-6 gap-y-1">
+                {diasHorario.map((d) => (
+                  <>
+                    <dt class="font-semibold">{d.dia}</dt>
+                    <dd class="text-tinta-suave">{d.horas}</dd>
+                  </>
+                ))}
+              </dl>
+            ) : (
+              <p class="mt-1 text-tinta-suave">
+                {info.horario.texto_provisorio}:{' '}
+                <a href={telHref} class="font-semibold text-cobre-forte underline underline-offset-4">
+                  {info.telefone_display}
+                </a>
+              </p>
+            )
+          }
+        </div>
+
+        {
+          info.pagamentos.length > 0 && (
+            <div>
+              <h3 class="flex items-center gap-2 text-xl font-semibold">
+                <Icone nome="cartao" class="h-5 w-5 text-cobre-forte" />
+                Pagamento na loja
+              </h3>
+              <p class="mt-1 text-tinta-suave">{info.pagamentos.join(' · ')}</p>
+            </div>
+          )
+        }
+
+        <div>
+          <h3 class="flex items-center gap-2 text-xl font-semibold">
+            <Icone nome="instagram" class="h-5 w-5 text-cobre-forte" />
+            Instagram
+          </h3>
+          <a
+            href={info.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-1 inline-block font-semibold text-cobre-forte underline underline-offset-4"
+          >
+            {utilizadorInstagram}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {
+      entrega.mostrar && entrega.lista.length > 0 && (
+        <div class="mt-5 flex flex-col gap-4 rounded-2xl bg-creme-escuro p-6 md:flex-row md:items-center md:justify-between md:px-8">
+          <p class="max-w-xl text-sm text-tinta-suave">
+            <strong class="text-tinta">Prefere receber em casa?</strong> Também estamos nas
+            plataformas de entrega. Os preços e a ementa nessas plataformas são diferentes dos de
+            balcão.
+          </p>
+          <ul class="flex flex-wrap gap-3">
+            {entrega.lista.map((p) => (
+              <li>
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="botao botao-contorno min-h-10! px-5! py-2! text-sm"
+                >
+                  {p.nome}
+                  <Icone nome="externo" class="h-4 w-4" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </div>
+</section>

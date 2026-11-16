@@ -1,0 +1,5 @@
+# Cloudflare Pages — site estático gerado pelo Astro.
+# Comando de build: npm run build · Pasta de saída: dist
+name = "churrasqueira-mendonca"
+compatibility_date = "2026-11-01"
+pages_build_output_dir = "./dist"

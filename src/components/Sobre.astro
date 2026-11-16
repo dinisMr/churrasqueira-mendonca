@@ -1,0 +1,59 @@
+---
+import Icone from './Icone.astro';
+import { info } from '../lib/catalogo';
+
+// Apenas factos confirmados no material fornecido — sem história inventada.
+const destaques = [
+  {
+    icone: 'chama' as const,
+    titulo: 'Churrasco e cozinha portuguesa',
+    texto: 'Frango no churrasco, entrecosto grelhado, salsichas e choco frito.',
+  },
+  {
+    icone: 'saco' as const,
+    titulo: 'Take-away',
+    texto: 'Menus familiares e individuais, já com acompanhamentos e bebida, prontos a levar.',
+  },
+  {
+    icone: 'relogio' as const,
+    titulo: 'Leitão por encomenda',
+    texto: 'Disponível mediante encomenda antecipada, pelo telefone ou ao balcão.',
+  },
+];
+---
+
+<section id="sobre" class="bg-carvao py-16 text-creme md:py-24">
+  <div class="contentor grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+    <div>
+      <p class="sobretitulo text-brasa">Sobre nós</p>
+      <h2 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+        Uma churrasqueira de bairro, em {info.morada.localidade}
+      </h2>
+      <p class="mt-6 text-lg text-creme/85">
+        A {info.nome} fica na {info.morada.rua}, na zona das {info.morada.zona}, concelho do{' '}
+        {info.morada.concelho}. Aqui encontra comida tradicional portuguesa e churrasco para levar,
+        com os preços afixados ao balcão.
+      </p>
+      <p class="mt-4 text-creme/85">
+        Para encomendar ou esclarecer qualquer dúvida sobre a ementa do dia, o mais simples é
+        telefonar-nos.
+      </p>
+    </div>
+
+    <ul class="grid gap-4">
+      {
+        destaques.map((d) => (
+          <li class="flex gap-4 rounded-2xl border border-white/10 bg-carvao-suave p-5 md:p-6">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-cobre-forte">
+              <Icone nome={d.icone} class="h-5 w-5" />
+            </span>
+            <div>
+              <h3 class="text-xl font-semibold">{d.titulo}</h3>
+              <p class="mt-1 text-creme/80">{d.texto}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+{
+  "nome": "Churrasqueira Mendonça",
+  "frase": "O sabor do churrasco, perto de si",
+  "url_site": "",
+
+  "morada": {
+    "rua": "Rua Movimento das Forças Armadas, 33A",
+    "codigo_postal": "2845-380",
+    "localidade": "Amora",
+    "concelho": "Seixal",
+    "zona": "Paivas",
+    "pais": "PT"
+  },
+
+  "telefone_display": "212 216 283",
+  "telefone_e164": "+351212216283",
+
+  "instagram": "https://www.instagram.com/churrasqueiramendonca/",
+  "google_maps": "https://www.google.com/maps/search/?api=1&query=Churrasqueira+Mendon%C3%A7a%2C+Rua+Movimento+das+For%C3%A7as+Armadas+33A%2C+Amora",
+
+  "horario": {
+    "confirmado": false,
+    "texto_provisorio": "Consulte-nos pelo telefone",
+    "dias": []
+  },
+
+  "pagamentos": ["Dinheiro", "Multibanco", "MB WAY"],
+
+  "plataformas_entrega": {
+    "mostrar": true,
+    "lista": [
+      {
+        "nome": "Uber Eats",
+        "url": "https://www.ubereats.com/pt/store/churrasqueira-mendonca/-wCr9rXzSLGP4akFpAOiRg"
+      },
+      {
+        "nome": "Glovo",
+        "url": "https://kaspi.glovoapp.com/pt/pt/almada/stores/mendon-a"
+      }
+    ]
+  }
+}

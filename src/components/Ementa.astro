@@ -1,0 +1,145 @@
+---
+import Icone from './Icone.astro';
+import {
+  ementa,
+  embalagens,
+  precoPublicavel,
+  formatarPreco,
+  sufixoUnidade,
+  telHref,
+  info,
+  type Produto,
+} from '../lib/catalogo';
+
+const SOB_CONSULTA = 'Preço sob consulta';
+
+function preco(p: Produto) {
+  const valor = precoPublicavel(p);
+  return valor === null ? null : { texto: formatarPreco(valor), sufixo: sufixoUnidade(p) };
+}
+---
+
+<section id="ementa" class="py-16 md:py-24">
+  <div class="contentor">
+    <p class="sobretitulo text-cobre-forte">Ementa</p>
+    <h2 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Preços de balcão</h2>
+    <p class="mt-4 max-w-2xl text-tinta-suave">
+      Valores praticados na loja, com IVA incluído. Os preços e a disponibilidade podem mudar sem
+      aviso — em caso de dúvida, ligue-nos.
+    </p>
+  </div>
+
+  <!-- Atalhos por categoria -->
+  <nav
+    aria-label="Categorias da ementa"
+    class="sticky top-[6.55rem] z-40 mt-8 border-y border-linha bg-creme/95 backdrop-blur md:top-16"
+  >
+    <ul class="contentor sem-barra flex gap-2 overflow-x-auto py-3">
+      {
+        ementa.map((c) => (
+          <li class="shrink-0">
+            <a
+              href={`#${c.id}`}
+              class="block rounded-full border border-linha bg-papel px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors hover:border-cobre-forte hover:text-cobre-forte"
+            >
+              {c.nome}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div class="contentor">
+    {
+      ementa.map((c) => (
+        <section id={c.id} aria-labelledby={`${c.id}-titulo`} class="pt-14">
+          <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-tinta pb-3">
+            <h3 id={`${c.id}-titulo`} class="text-2xl font-semibold tracking-tight md:text-3xl">
+              {c.nome}
+            </h3>
+            {c.nota && <p class="text-sm text-tinta-suave">{c.nota}</p>}
+          </div>
+
+          {c.formato === 'cartoes' ? (
+            <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {c.produtos.map((p) => {
+                const v = preco(p);
+                return (
+                  <li class="flex flex-col rounded-2xl border border-linha bg-papel p-5">
+                    <h4 class="font-display text-xl leading-snug font-semibold">{p.nome}</h4>
+                    {p.descricao && (
+                      <p class="mt-2 flex-1 text-sm text-tinta-suave">{p.descricao}</p>
+                    )}
+                    <p class="mt-5 border-t border-linha pt-3">
+                      {v ? (
+                        <span class="font-display text-2xl font-semibold text-cobre-forte">
+                          {v.texto}
+                          {v.sufixo && <span class="text-base font-medium">{v.sufixo}</span>}
+                        </span>
+                      ) : (
+                        <span class="text-sm font-semibold text-tinta-suave">{SOB_CONSULTA}</span>
+                      )}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <ul class="mt-2 grid gap-x-14 md:grid-cols-2">
+              {c.produtos.map((p) => {
+                const v = preco(p);
+                return (
+                  <li class="border-b border-linha py-4">
+                    <div class="flex items-baseline gap-3">
+                      <h4 class="text-[1.05rem] font-semibold">{p.nome}</h4>
+                      <span class="pontilhado" aria-hidden="true" />
+                      {v ? (
+                        <span class="font-display text-lg font-semibold whitespace-nowrap text-cobre-forte">
+                          {v.texto}
+                          {v.sufixo && <span class="text-sm font-medium">{v.sufixo}</span>}
+                        </span>
+                      ) : (
+                        <span class="text-sm font-semibold whitespace-nowrap text-tinta-suave">
+                          {SOB_CONSULTA}
+                        </span>
+                      )}
+                    </div>
+                    {p.descricao && <p class="mt-1 text-sm text-tinta-suave">{p.descricao}</p>}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </section>
+      ))
+    }
+
+    <div class="mt-12 flex flex-col gap-5 rounded-2xl bg-creme-escuro p-6 md:flex-row md:items-center md:justify-between md:p-8">
+      <div class="max-w-2xl text-sm text-tinta-suave">
+        <p>
+          <strong class="text-tinta">“{SOB_CONSULTA}”</strong> indica artigos cujo valor confirmamos
+          ao balcão ou pelo telefone.
+        </p>
+        {
+          embalagens.length > 0 && (
+            <p class="mt-2">
+              Sacos:{' '}
+              {embalagens
+                .map(
+                  (p) =>
+                    `${p.nome.replace(/^Saco\s+/i, '')} ${formatarPreco(precoPublicavel(p) as number)}`,
+                )
+                .join(' · ')}
+              .
+            </p>
+          )
+        }
+      </div>
+      <a href={telHref} class="botao botao-cobre shrink-0">
+        <Icone nome="telefone" class="h-4 w-4" />
+        Ligar {info.telefone_display}
+      </a>
+    </div>
+  </div>
+</section>
