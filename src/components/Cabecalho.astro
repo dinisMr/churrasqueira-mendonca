@@ -12,11 +12,11 @@ const ligacoes = [
 <header class="sticky top-0 z-50 border-b border-white/10 bg-carvao/95 text-creme backdrop-blur">
   <div class="contentor flex h-16 items-center justify-between gap-4">
     <a href="#topo" class="flex items-center gap-2.5" aria-label={`${info.nome} — início`}>
-      <span class="grid h-9 w-9 place-items-center rounded-full bg-vermelho text-creme">
+      <span class="grid h-9 w-9 place-items-center rounded-full bg-cobre-forte text-creme">
         <Icone nome="chama" class="h-5 w-5" />
       </span>
-      <span class="font-display text-xl leading-none font-semibold tracking-wide uppercase">
-        <span class="block text-[0.62rem] font-sans font-bold tracking-[0.22em] text-amarelo uppercase">
+      <span class="font-display text-lg leading-none font-semibold tracking-tight">
+        <span class="block text-[0.62rem] font-sans font-bold tracking-[0.22em] text-brasa uppercase">
           Churrasqueira
         </span>
         Mendonça
@@ -28,7 +28,7 @@ const ligacoes = [
         {
           ligacoes.map((l) => (
             <li>
-              <a href={l.href} class="py-2 transition-colors hover:text-amarelo">
+              <a href={l.href} class="py-2 transition-colors hover:text-brasa">
                 {l.texto}
               </a>
             </li>
@@ -37,7 +37,7 @@ const ligacoes = [
       </ul>
     </nav>
 
-    <a href={telHref} class="botao botao-principal min-h-10! px-4! py-2! text-sm">
+    <a href={telHref} class="botao botao-cobre min-h-10! px-4! py-2! text-sm">
       <Icone nome="telefone" class="h-4 w-4" />
       <span class="hidden sm:inline">{info.telefone_display}</span>
       <span class="sm:hidden">Ligar</span>
