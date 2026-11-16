@@ -7,12 +7,7 @@
   --color-creme: #f8f4eb;
   --color-creme-escuro: #efe8d8;
   --color-papel: #fffdf8;
-  /* Cobre da marca: decoração e texto grande sobre carvão. */
-  --color-cobre: #bb5b32;
-  /* Cobre escurecido: texto e botões com contraste AA sobre creme/branco. */
-  --color-cobre-forte: #9a4423;
-  --color-brasa: #e58a55;
-  /* Dourado do logótipo (faixa inferior, cor medida na imagem). */
+  /* Dourado do logótipo (faixa inferior, cor medida na imagem): a única cor de destaque do site. */
   --color-galo: #f8b820;
   --color-verde: #3f6147;
   --color-tinta: #2a2623;
@@ -46,7 +41,7 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-brasa);
+    outline: 3px solid var(--color-galo);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -103,12 +98,12 @@
   .botao:active {
     transform: translateY(1px);
   }
-  .botao-cobre {
-    background-color: var(--color-cobre-forte);
-    color: #fff;
+  .botao-principal {
+    background-color: var(--color-galo);
+    color: var(--color-carvao);
   }
-  .botao-cobre:hover {
-    background-color: #833a1d;
+  .botao-principal:hover {
+    background-color: #ffca47;
   }
   .botao-claro {
     border: 1.5px solid rgb(248 244 235 / 0.55);
@@ -135,16 +130,11 @@
     transform: translateY(-0.35em);
   }
 
-  /* Preço: número no dourado do logótipo sobre etiqueta escura, para se ler bem em fundo claro. */
+  /* Preço: número no dourado do logótipo. */
   .preco {
-    display: inline-flex;
-    align-items: baseline;
-    padding: 0.1rem 0.65rem 0.2rem;
-    border-radius: 0.5rem;
-    background-color: var(--color-carvao);
     color: var(--color-galo);
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 700;
     white-space: nowrap;
   }
 

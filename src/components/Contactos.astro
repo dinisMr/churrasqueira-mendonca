@@ -17,7 +17,7 @@ const utilizadorInstagram =
 
 <section id="contactos" class="py-16 md:py-24">
   <div class="contentor">
-    <p class="sobretitulo text-cobre-forte">{t.contactos.sobretitulo}</p>
+    <p class="sobretitulo text-galo">{t.contactos.sobretitulo}</p>
     <h2 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">{t.contactos.titulo}</h2>
 
     <div class="mt-10 grid gap-5 lg:grid-cols-3">
@@ -32,7 +32,7 @@ const utilizadorInstagram =
         >
           {info.telefone_display}
         </a>
-        <a href={telHref} class="botao botao-cobre mt-6 self-start lg:mt-auto">
+        <a href={telHref} class="botao botao-principal mt-6 self-start lg:mt-auto">
           <Icone nome="telefone" class="h-4 w-4" />
           {t.contactos.telefonar}
         </a>
@@ -40,7 +40,7 @@ const utilizadorInstagram =
 
       <!-- Morada -->
       <div class="flex flex-col rounded-2xl border border-linha bg-papel p-7">
-        <Icone nome="mapa" class="h-6 w-6 text-cobre-forte" />
+        <Icone nome="mapa" class="h-6 w-6 text-galo" />
         <h3 class="mt-4 text-2xl font-semibold">{t.contactos.morada}</h3>
         <address class="mt-2 text-lg leading-snug not-italic">
           {moradaLinha1}<br />
@@ -62,7 +62,7 @@ const utilizadorInstagram =
       <div class="flex flex-col gap-6 rounded-2xl border border-linha bg-papel p-7">
         <div>
           <h3 class="flex items-center gap-2 text-xl font-semibold">
-            <Icone nome="relogio" class="h-5 w-5 text-cobre-forte" />
+            <Icone nome="relogio" class="h-5 w-5 text-galo" />
             {t.contactos.horario}
           </h3>
           {
@@ -78,7 +78,7 @@ const utilizadorInstagram =
             ) : (
               <p class="mt-1 text-tinta-suave">
                 {t.contactos.horarioProvisorio}:{' '}
-                <a href={telHref} class="font-semibold text-cobre-forte underline underline-offset-4">
+                <a href={telHref} class="font-semibold text-tinta underline decoration-galo decoration-2 underline-offset-4">
                   {info.telefone_display}
                 </a>
               </p>
@@ -90,7 +90,7 @@ const utilizadorInstagram =
           info.pagamentos.length > 0 && (
             <div>
               <h3 class="flex items-center gap-2 text-xl font-semibold">
-                <Icone nome="cartao" class="h-5 w-5 text-cobre-forte" />
+                <Icone nome="cartao" class="h-5 w-5 text-galo" />
                 {t.contactos.pagamento}
               </h3>
               <p class="mt-1 text-tinta-suave">{info.pagamentos.map((p) => nomePagamento(p, lingua)).join(' · ')}</p>
@@ -100,14 +100,14 @@ const utilizadorInstagram =
 
         <div>
           <h3 class="flex items-center gap-2 text-xl font-semibold">
-            <Icone nome="instagram" class="h-5 w-5 text-cobre-forte" />
+            <Icone nome="instagram" class="h-5 w-5 text-galo" />
             Instagram
           </h3>
           <a
             href={info.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-1 inline-block font-semibold text-cobre-forte underline underline-offset-4"
+            class="mt-1 inline-block font-semibold text-tinta underline decoration-galo decoration-2 underline-offset-4"
           >
             {utilizadorInstagram}
           </a>
