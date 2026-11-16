@@ -87,19 +87,19 @@ function preco(p: Produto) {
               {c.produtos.map((p) => {
                 const v = preco(p);
                 return (
-                  <li class="flex flex-col rounded-2xl border border-linha bg-papel p-5">
+                  <li class="madeira flex flex-col rounded-2xl p-5 text-creme shadow-sm">
                     <h4 class="font-display text-xl leading-snug font-semibold">{nomeProduto(p, lingua)}</h4>
                     {descricaoProduto(p, lingua) && (
-                      <p class="mt-2 flex-1 text-sm text-tinta-suave">{descricaoProduto(p, lingua)}</p>
+                      <p class="mt-2 flex-1 text-sm text-creme/80">{descricaoProduto(p, lingua)}</p>
                     )}
-                    <p class="mt-5 border-t border-linha pt-3">
+                    <p class="mt-5 border-t border-white/15 pt-3">
                       {v ? (
                         <span class="preco text-2xl">
                           {v.texto}
                           {v.sufixo && <span class="text-base font-medium">{v.sufixo}</span>}
                         </span>
                       ) : (
-                        <span class="text-sm font-semibold text-tinta-suave">{SOB_CONSULTA}</span>
+                        <span class="text-sm font-semibold text-creme/80">{SOB_CONSULTA}</span>
                       )}
                     </p>
                   </li>
@@ -107,11 +107,11 @@ function preco(p: Produto) {
               })}
             </ul>
           ) : (
-            <ul class="mt-2 grid gap-x-14 md:grid-cols-2">
+            <ul class="madeira mt-6 grid gap-x-14 rounded-2xl px-5 py-2 text-creme shadow-sm md:grid-cols-2 md:px-8">
               {c.produtos.map((p) => {
                 const v = preco(p);
                 return (
-                  <li class="border-b border-linha py-4">
+                  <li class="border-b border-white/10 py-4">
                     <div class="flex items-baseline gap-3">
                       <h4 class="text-[1.05rem] font-semibold">{nomeProduto(p, lingua)}</h4>
                       <span class="pontilhado" aria-hidden="true" />
@@ -121,13 +121,13 @@ function preco(p: Produto) {
                           {v.sufixo && <span class="text-sm font-medium">{v.sufixo}</span>}
                         </span>
                       ) : (
-                        <span class="text-sm font-semibold whitespace-nowrap text-tinta-suave">
+                        <span class="text-sm font-semibold whitespace-nowrap text-creme/80">
                           {SOB_CONSULTA}
                         </span>
                       )}
                     </div>
                     {descricaoProduto(p, lingua) && (
-                      <p class="mt-1 text-sm text-tinta-suave">{descricaoProduto(p, lingua)}</p>
+                      <p class="mt-1 text-sm text-creme/80">{descricaoProduto(p, lingua)}</p>
                     )}
                   </li>
                 );
