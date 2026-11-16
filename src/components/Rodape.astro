@@ -3,6 +3,13 @@ import { Image } from 'astro:assets';
 import Icone from './Icone.astro';
 import logo from '../assets/logo.png';
 import { info, telHref, moradaLinha1, moradaLinha2 } from '../lib/catalogo';
+import { textos, type Lingua } from '../i18n/textos';
+
+interface Props {
+  lingua: Lingua;
+}
+const { lingua } = Astro.props;
+const t = textos[lingua];
 const ano = new Date().getFullYear();
 ---
 
@@ -42,14 +49,14 @@ const ano = new Date().getFullYear();
           class="flex items-center gap-2 hover:text-brasa"
         >
           <Icone nome="mapa" class="h-4 w-4 text-brasa" />
-          Como chegar
+          {t.rodape.comoChegar}
         </a>
       </li>
     </ul>
   </div>
   <div class="contentor mt-10 border-t border-white/10 pt-6 text-xs text-creme/65">
     <p>
-      © {ano} {info.nome}. Preços de balcão com IVA incluído, sujeitos a alteração sem aviso prévio.
+      © {ano} {info.nome}. {t.rodape.legal}
     </p>
   </div>
 </footer>

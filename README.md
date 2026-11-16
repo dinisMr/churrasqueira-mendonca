@@ -56,6 +56,19 @@ Tudo está em **`src/data/catalogo.json`**. Cada produto é um bloco:
 A ordem, os nomes e as notas das **categorias** estão em `src/lib/catalogo.ts`
 (lista `categorias`). Uma categoria nova no JSON tem de ser acrescentada aí.
 
+## Duas línguas (português e inglês)
+
+O site tem duas páginas: `/` em português e `/en/` em inglês, com o seletor
+PT | EN no cabeçalho.
+
+- **Produtos:** em `catalogo.json`, cada produto tem `nome_en` e
+  `descricao_en`. Ao criar ou alterar um produto, preencha também estes
+  campos; se faltarem, a página inglesa mostra o texto português.
+- **Categorias:** `nome_en` e `nota_en` em `src/lib/catalogo.ts`.
+- **Restantes textos** (títulos, botões, "Sobre nós", contactos): em
+  `src/i18n/textos.ts`, com um bloco `pt` e um bloco `en` lado a lado.
+- Preços, telefone, morada e horário são partilhados: alteram-se uma só vez.
+
 ## Alterar contactos, horário e ligações
 
 Em **`src/data/estabelecimento.json`**:
@@ -100,8 +113,10 @@ src/
   data/catalogo.json          produtos e preços
   data/estabelecimento.json   contactos, horário, ligações
   lib/catalogo.ts             categorias e regra de publicação de preços
+  i18n/textos.ts              textos da interface em português e inglês
   components/                 Cabecalho, Hero, Ementa, Sobre, Contactos, Rodape
   layouts/Base.astro          <head>, SEO e dados estruturados
-  pages/index.astro           a página
+  pages/index.astro           página em português (/)
+  pages/en/index.astro        página em inglês (/en/)
   styles/global.css           cores, tipografia e estilos base
 ```

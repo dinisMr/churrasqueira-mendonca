@@ -1,54 +1,43 @@
 ---
 import Icone from './Icone.astro';
 import { info } from '../lib/catalogo';
+import { textos, type Lingua } from '../i18n/textos';
+
+interface Props {
+  lingua: Lingua;
+}
+const { lingua } = Astro.props;
+const t = textos[lingua];
 
 // Apenas factos confirmados no material fornecido — sem história inventada.
-const destaques = [
-  {
-    icone: 'chama' as const,
-    titulo: 'Churrasco e cozinha portuguesa',
-    texto: 'Frango no churrasco, entrecosto grelhado, salsichas e choco frito.',
-  },
-  {
-    icone: 'saco' as const,
-    titulo: 'Take-away',
-    texto: 'Menus familiares e individuais, já com acompanhamentos e bebida, prontos a levar.',
-  },
-  {
-    icone: 'relogio' as const,
-    titulo: 'Leitão por encomenda',
-    texto: 'Preparado apenas mediante pedido antecipado. Informe-se junto de nós.',
-  },
-];
+const destaques = [{ icone: 'chama' as const }, { icone: 'saco' as const }, { icone: 'relogio' as const }];
 ---
 
 <section id="sobre" class="bg-carvao py-16 text-creme md:py-24">
   <div class="contentor grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
     <div>
-      <p class="sobretitulo text-brasa">Sobre nós</p>
+      <p class="sobretitulo text-brasa">{t.sobre.sobretitulo}</p>
       <h2 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
-        Uma churrasqueira de bairro, em {info.morada.localidade}
+        {t.sobre.titulo(info.morada.localidade)}
       </h2>
       <p class="mt-6 text-lg text-creme/85">
-        A {info.nome} fica na {info.morada.rua}, na zona das {info.morada.zona}, concelho do{' '}
-        {info.morada.concelho}. Aqui encontra comida tradicional portuguesa e churrasco para levar,
-        com os preços afixados ao balcão.
+        {t.sobre.p1(info.nome, info.morada.rua, info.morada.zona, info.morada.concelho)}
       </p>
       <p class="mt-4 text-creme/85">
-        Para esclarecer qualquer dúvida sobre a ementa do dia, o mais simples é telefonar-nos.
+        {t.sobre.p2}
       </p>
     </div>
 
     <ul class="grid gap-4">
       {
-        destaques.map((d) => (
+        destaques.map((d, i) => (
           <li class="flex gap-4 rounded-2xl border border-white/10 bg-carvao-suave p-5 md:p-6">
             <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-cobre-forte">
               <Icone nome={d.icone} class="h-5 w-5" />
             </span>
             <div>
-              <h3 class="text-xl font-semibold">{d.titulo}</h3>
-              <p class="mt-1 text-creme/80">{d.texto}</p>
+              <h3 class="text-xl font-semibold">{t.sobre.destaques[i]?.titulo}</h3>
+              <p class="mt-1 text-creme/80">{t.sobre.destaques[i]?.texto}</p>
             </div>
           </li>
         ))

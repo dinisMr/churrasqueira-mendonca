@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Cabecalho from './Cabecalho.astro';
+import Hero from './Hero.astro';
+import Ementa from './Ementa.astro';
+import Galeria from './Galeria.astro';
+import Sobre from './Sobre.astro';
+import Contactos from './Contactos.astro';
+import Rodape from './Rodape.astro';
+import { info } from '../lib/catalogo';
+import { textos, type Lingua } from '../i18n/textos';
+
+interface Props {
+  lingua: Lingua;
+}
+const { lingua } = Astro.props;
+const t = textos[lingua];
+
+const titulo = t.meta.titulo(info.nome, info.morada.localidade, info.morada.concelho);
+const descricao = t.meta.descricao(info.morada.rua, info.morada.localidade, info.telefone_display);
+---
+
+<Base titulo={titulo} descricao={descricao} lingua={lingua}>
+  <Cabecalho lingua={lingua} />
+  <main id="conteudo">
+    <Hero lingua={lingua} />
+    <Ementa lingua={lingua} />
+    <Galeria lingua={lingua} />
+    <Sobre lingua={lingua} />
+    <Contactos lingua={lingua} />
+  </main>
+  <Rodape lingua={lingua} />
+</Base>

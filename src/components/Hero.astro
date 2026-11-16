@@ -3,6 +3,13 @@ import Icone from './Icone.astro';
 import { Image } from 'astro:assets';
 import { info, moradaLinha1 } from '../lib/catalogo';
 import { capa } from '../lib/fotos';
+import { textos, type Lingua } from '../i18n/textos';
+
+interface Props {
+  lingua: Lingua;
+}
+const { lingua } = Astro.props;
+const t = textos[lingua];
 ---
 
 <section id="topo" class="relative isolate overflow-hidden bg-carvao text-creme">
@@ -53,29 +60,28 @@ import { capa } from '../lib/fotos';
     </p>
 
     <h1 class="mt-5 max-w-3xl text-[2.6rem] leading-[1.05] font-semibold tracking-tight sm:text-6xl md:text-7xl">
-      O sabor do churrasco, <span class="text-brasa">perto de si</span>
+      {t.hero.tituloA} <span class="text-brasa">{t.hero.tituloB}</span>
     </h1>
 
     <p class="mt-6 max-w-xl text-lg text-creme/85">
-      Frango no churrasco, entrecosto, choco frito e menus completos para levar para casa, na{' '}
-      {info.nome}.
+      {t.hero.texto(info.nome)}
     </p>
 
     <div class="mt-9 flex flex-col gap-3 sm:flex-row">
       <a href="#ementa" class="botao botao-cobre">
-        Ver ementa
+        {t.hero.verEmenta}
         <Icone nome="seta" class="h-4 w-4" />
       </a>
       <a href="#contactos" class="botao botao-claro">
         <Icone nome="mapa" class="h-4 w-4" />
-        Contactos e localização
+        {t.hero.contactos}
       </a>
     </div>
 
     <ul class="mt-12 flex flex-col gap-x-8 gap-y-3 text-sm text-creme/85 sm:flex-row sm:flex-wrap">
       <li class="flex items-center gap-2">
         <Icone nome="saco" class="h-4 w-4 text-brasa" />
-        Take-away
+        {t.hero.takeaway}
       </li>
       <li class="flex items-center gap-2">
         <Icone nome="mapa" class="h-4 w-4 text-brasa" />

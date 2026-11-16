@@ -8,30 +8,40 @@ import {
   sufixoUnidade,
   telHref,
   info,
+  nomeProduto,
+  descricaoProduto,
+  nomeCategoria,
+  notaCategoria,
   type Produto,
 } from '../lib/catalogo';
+import { textos, type Lingua } from '../i18n/textos';
 
-const SOB_CONSULTA = 'Preço sob consulta';
+interface Props {
+  lingua: Lingua;
+}
+const { lingua } = Astro.props;
+const t = textos[lingua];
+
+const SOB_CONSULTA = t.ementa.sobConsulta;
 
 function preco(p: Produto) {
   const valor = precoPublicavel(p);
-  return valor === null ? null : { texto: formatarPreco(valor), sufixo: sufixoUnidade(p) };
+  return valor === null ? null : { texto: formatarPreco(valor, lingua), sufixo: sufixoUnidade(p) };
 }
 ---
 
 <section id="ementa" class="py-16 md:py-24">
   <div class="contentor">
-    <p class="sobretitulo text-cobre-forte">Ementa</p>
-    <h2 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Preços de balcão</h2>
+    <p class="sobretitulo text-cobre-forte">{t.ementa.sobretitulo}</p>
+    <h2 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">{t.ementa.titulo}</h2>
     <p class="mt-4 max-w-2xl text-tinta-suave">
-      Valores praticados na loja, com IVA incluído. Os preços e a disponibilidade podem mudar sem
-      aviso — em caso de dúvida, ligue-nos.
+      {t.ementa.intro}
     </p>
   </div>
 
   <!-- Atalhos por categoria -->
   <nav
-    aria-label="Categorias da ementa"
+    aria-label={t.ementa.categorias}
     class="sticky top-[6.55rem] z-40 mt-8 border-y border-linha bg-creme/95 backdrop-blur md:top-16"
   >
     <ul class="contentor sem-barra flex gap-2 overflow-x-auto py-3">
@@ -42,7 +52,7 @@ function preco(p: Produto) {
               href={`#${c.id}`}
               class="block rounded-full border border-linha bg-papel px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors hover:border-cobre-forte hover:text-cobre-forte"
             >
-              {c.nome}
+              {nomeCategoria(c, lingua)}
             </a>
           </li>
         ))
@@ -56,9 +66,11 @@ function preco(p: Produto) {
         <section id={c.id} aria-labelledby={`${c.id}-titulo`} class="pt-14">
           <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-tinta pb-3">
             <h3 id={`${c.id}-titulo`} class="text-2xl font-semibold tracking-tight md:text-3xl">
-              {c.nome}
+              {nomeCategoria(c, lingua)}
             </h3>
-            {c.nota && <p class="text-sm text-tinta-suave">{c.nota}</p>}
+            {notaCategoria(c, lingua) && (
+              <p class="text-sm text-tinta-suave">{notaCategoria(c, lingua)}</p>
+            )}
           </div>
 
           {c.formato === 'cartoes' ? (
@@ -67,9 +79,9 @@ function preco(p: Produto) {
                 const v = preco(p);
                 return (
                   <li class="flex flex-col rounded-2xl border border-linha bg-papel p-5">
-                    <h4 class="font-display text-xl leading-snug font-semibold">{p.nome}</h4>
-                    {p.descricao && (
-                      <p class="mt-2 flex-1 text-sm text-tinta-suave">{p.descricao}</p>
+                    <h4 class="font-display text-xl leading-snug font-semibold">{nomeProduto(p, lingua)}</h4>
+                    {descricaoProduto(p, lingua) && (
+                      <p class="mt-2 flex-1 text-sm text-tinta-suave">{descricaoProduto(p, lingua)}</p>
                     )}
                     <p class="mt-5 border-t border-linha pt-3">
                       {v ? (
@@ -92,7 +104,7 @@ function preco(p: Produto) {
                 return (
                   <li class="border-b border-linha py-4">
                     <div class="flex items-baseline gap-3">
-                      <h4 class="text-[1.05rem] font-semibold">{p.nome}</h4>
+                      <h4 class="text-[1.05rem] font-semibold">{nomeProduto(p, lingua)}</h4>
                       <span class="pontilhado" aria-hidden="true" />
                       {v ? (
                         <span class="font-display text-lg font-semibold whitespace-nowrap text-cobre-forte">
@@ -105,7 +117,9 @@ function preco(p: Produto) {
                         </span>
                       )}
                     </div>
-                    {p.descricao && <p class="mt-1 text-sm text-tinta-suave">{p.descricao}</p>}
+                    {descricaoProduto(p, lingua) && (
+                      <p class="mt-1 text-sm text-tinta-suave">{descricaoProduto(p, lingua)}</p>
+                    )}
                   </li>
                 );
               })}
@@ -118,17 +132,16 @@ function preco(p: Produto) {
     <div class="mt-12 flex flex-col gap-5 rounded-2xl bg-creme-escuro p-6 md:flex-row md:items-center md:justify-between md:p-8">
       <div class="max-w-2xl text-sm text-tinta-suave">
         <p>
-          <strong class="text-tinta">“{SOB_CONSULTA}”</strong> indica artigos cujo valor confirmamos
-          ao balcão ou pelo telefone.
+          <strong class="text-tinta">“{SOB_CONSULTA}”</strong> {t.ementa.notaSobConsulta}
         </p>
         {
           embalagens.length > 0 && (
             <p class="mt-2">
-              Sacos:{' '}
+              {t.ementa.sacos}:{' '}
               {embalagens
                 .map(
                   (p) =>
-                    `${p.nome.replace(/^Saco\s+/i, '')} ${formatarPreco(precoPublicavel(p) as number)}`,
+                    `${nomeProduto(p, lingua).replace(/^Saco\s+|\s+bag$/gi, '').toLowerCase()} ${formatarPreco(precoPublicavel(p) as number, lingua)}`,
                 )
                 .join(' · ')}
               .
@@ -138,7 +151,7 @@ function preco(p: Produto) {
       </div>
       <a href={telHref} class="botao botao-cobre shrink-0">
         <Icone nome="telefone" class="h-4 w-4" />
-        Ligar {info.telefone_display}
+        {t.ementa.ligar} {info.telefone_display}
       </a>
     </div>
   </div>

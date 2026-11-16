@@ -1,26 +1,5 @@
 ---
-import Base from '../layouts/Base.astro';
-import Cabecalho from '../components/Cabecalho.astro';
-import Hero from '../components/Hero.astro';
-import Ementa from '../components/Ementa.astro';
-import Galeria from '../components/Galeria.astro';
-import Sobre from '../components/Sobre.astro';
-import Contactos from '../components/Contactos.astro';
-import Rodape from '../components/Rodape.astro';
-import { info } from '../lib/catalogo';
-
-const titulo = `${info.nome} — Churrasco e take-away em ${info.morada.localidade}, ${info.morada.concelho}`;
-const descricao = `Frango no churrasco, entrecosto, choco frito e menus familiares para levar. ${info.morada.rua}, ${info.morada.localidade}. Telefone: ${info.telefone_display}.`;
+import Pagina from '../components/Pagina.astro';
 ---
 
-<Base titulo={titulo} descricao={descricao}>
-  <Cabecalho />
-  <main id="conteudo">
-    <Hero />
-    <Ementa />
-    <Galeria />
-    <Sobre />
-    <Contactos />
-  </main>
-  <Rodape />
-</Base>
+<Pagina lingua="pt" />

@@ -3,17 +3,24 @@ import { Image } from 'astro:assets';
 import Icone from './Icone.astro';
 import logo from '../assets/logo.png';
 import { info, telHref } from '../lib/catalogo';
+import { textos, linguas, type Lingua } from '../i18n/textos';
+
+interface Props {
+  lingua: Lingua;
+}
+const { lingua } = Astro.props;
+const t = textos[lingua];
 
 const ligacoes = [
-  { href: '#ementa', texto: 'Ementa' },
-  { href: '#sobre', texto: 'Sobre nós' },
-  { href: '#contactos', texto: 'Contactos' },
+  { href: '#ementa', texto: t.nav.ementa },
+  { href: '#sobre', texto: t.nav.sobre },
+  { href: '#contactos', texto: t.nav.contactos },
 ];
 ---
 
 <header class="sticky top-0 z-50 border-b border-white/10 bg-carvao/95 text-creme backdrop-blur">
   <div class="contentor flex h-16 items-center justify-between gap-4">
-    <a href="#topo" class="flex items-center gap-2.5" aria-label={`${info.nome} — início`}>
+    <a href="#topo" class="flex items-center gap-2.5" aria-label={`${info.nome} — ${t.nav.inicio}`}>
       <Image src={logo} alt="" width={44} height={44} densities={[1, 2]} loading="eager" class="h-11 w-11 rounded-full" />
       <span class="font-display text-lg leading-none font-semibold tracking-tight">
         <span class="block text-[0.62rem] font-sans font-bold tracking-[0.22em] text-brasa uppercase">
@@ -23,7 +30,7 @@ const ligacoes = [
       </span>
     </a>
 
-    <nav aria-label="Navegação principal" class="hidden md:block">
+    <nav aria-label={t.nav.principal} class="hidden md:block">
       <ul class="flex items-center gap-8 text-sm font-semibold">
         {
           ligacoes.map((l) => (
@@ -37,14 +44,38 @@ const ligacoes = [
       </ul>
     </nav>
 
-    <a href={telHref} class="botao botao-cobre min-h-10! px-4! py-2! text-sm">
+    <div class="flex shrink-0 items-center gap-2 sm:gap-3">
+      <ul class="flex items-center rounded-full border border-white/20 p-0.5 text-xs font-bold" aria-label={t.nav.lingua}>
+        {
+          linguas.map((l) => (
+            <li>
+              <a
+                href={l.caminho}
+                hreflang={l.html}
+                lang={l.html}
+                title={l.nome}
+                aria-label={l.nome}
+                aria-current={l.codigo === lingua ? 'true' : undefined}
+                class:list={[
+                  'block rounded-full px-2.5 py-1.5 transition-colors',
+                  l.codigo === lingua ? 'bg-creme text-carvao' : 'text-creme/80 hover:text-brasa',
+                ]}
+              >
+                {l.rotulo}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    <a href={telHref} class="botao botao-cobre min-h-10! min-w-10 px-0! py-2! text-sm sm:px-4!">
       <Icone nome="telefone" class="h-4 w-4" />
       <span class="hidden sm:inline">{info.telefone_display}</span>
-      <span class="sm:hidden">Ligar</span>
+      <span class="sr-only">{t.nav.ligar}</span>
     </a>
+    </div>
   </div>
 
-  <nav aria-label="Navegação rápida" class="border-t border-white/10 md:hidden">
+  <nav aria-label={t.nav.rapida} class="border-t border-white/10 md:hidden">
     <ul class="contentor flex justify-between text-sm font-semibold">
       {
         ligacoes.map((l) => (
