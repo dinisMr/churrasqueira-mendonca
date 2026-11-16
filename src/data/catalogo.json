@@ -382,13 +382,13 @@
     "categoria": "Embalagens",
     "nome": "Saco grande",
     "nome_en": "Large bag",
-    "preco_balcao_eur": 0.2,
+    "preco_balcao_eur": 0.1,
     "unidade": "unidade",
     "descricao": "",
     "descricao_en": "",
     "fonte_fotografia": "foto_02_preçario_geral.jpeg",
     "estado_verificacao": "confirmado",
-    "notas": "Valor manuscrito.",
+    "notas": "Valor indicado pelo responsável (0,10 €); o preçário fotografado mostrava 0,20 € manuscrito.",
     "preco_alternativo_foto_eur": null
   },
   {

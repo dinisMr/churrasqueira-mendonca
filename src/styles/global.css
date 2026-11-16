@@ -135,6 +135,19 @@
     transform: translateY(-0.35em);
   }
 
+  /* Preço: número no dourado do logótipo sobre etiqueta escura, para se ler bem em fundo claro. */
+  .preco {
+    display: inline-flex;
+    align-items: baseline;
+    padding: 0.1rem 0.65rem 0.2rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-carvao);
+    color: var(--color-galo);
+    font-family: var(--font-display);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
   .sem-barra {
     scrollbar-width: none;
   }

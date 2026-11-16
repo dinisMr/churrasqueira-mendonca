@@ -41,12 +41,11 @@ const pt = {
     sobretitulo: 'Ementa',
     titulo: 'Preços de balcão',
     intro:
-      'Valores praticados na loja, com IVA incluído. Os preços e a disponibilidade podem mudar sem aviso — em caso de dúvida, ligue-nos.',
+      'Valores praticados na loja, com IVA incluído. Os preços e a disponibilidade podem mudar sem aviso.',
     categorias: 'Categorias da ementa',
     sobConsulta: 'Preço sob consulta',
-    notaSobConsulta: 'indica artigos cujo valor confirmamos ao balcão ou pelo telefone.',
+    notaSobConsulta: 'indica artigos cujo valor é confirmado ao balcão.',
     sacos: 'Sacos',
-    ligar: 'Ligar',
   },
   galeria: { sobretitulo: 'Galeria', titulo: 'Da nossa brasa' },
   sobre: {
@@ -125,12 +124,11 @@ const en: typeof pt = {
     sobretitulo: 'Menu',
     titulo: 'Counter prices',
     intro:
-      'Prices charged in the shop, VAT included. Prices and availability may change without notice — if in doubt, give us a call.',
+      'Prices charged in the shop, VAT included. Prices and availability may change without notice.',
     categorias: 'Menu categories',
     sobConsulta: 'Price on request',
-    notaSobConsulta: 'marks items whose price we confirm at the counter or by phone.',
+    notaSobConsulta: 'marks items whose price is confirmed at the counter.',
     sacos: 'Bags',
-    ligar: 'Call',
   },
   galeria: { sobretitulo: 'Gallery', titulo: 'From our grill' },
   sobre: {

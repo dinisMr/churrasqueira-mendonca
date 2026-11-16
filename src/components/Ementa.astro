@@ -1,13 +1,10 @@
 ---
-import Icone from './Icone.astro';
 import {
   ementa,
   embalagens,
   precoPublicavel,
   formatarPreco,
   sufixoUnidade,
-  telHref,
-  info,
   nomeProduto,
   descricaoProduto,
   nomeCategoria,
@@ -23,6 +20,18 @@ const { lingua } = Astro.props;
 const t = textos[lingua];
 
 const SOB_CONSULTA = t.ementa.sobConsulta;
+
+// Sacos: se todos custam o mesmo mostra-se um só preço; caso contrário, um por tamanho.
+const precosSacos = embalagens.map((p) => precoPublicavel(p) as number);
+const textoSacos =
+  new Set(precosSacos).size === 1
+    ? formatarPreco(precosSacos[0] as number, lingua)
+    : embalagens
+        .map(
+          (p) =>
+            `${nomeProduto(p, lingua).replace(/^Saco\s+|\s+bag$/gi, '').toLowerCase()} ${formatarPreco(precoPublicavel(p) as number, lingua)}`,
+        )
+        .join(' · ');
 
 function preco(p: Produto) {
   const valor = precoPublicavel(p);
@@ -85,7 +94,7 @@ function preco(p: Produto) {
                     )}
                     <p class="mt-5 border-t border-linha pt-3">
                       {v ? (
-                        <span class="font-display text-2xl font-semibold text-cobre-forte">
+                        <span class="preco text-2xl">
                           {v.texto}
                           {v.sufixo && <span class="text-base font-medium">{v.sufixo}</span>}
                         </span>
@@ -107,7 +116,7 @@ function preco(p: Produto) {
                       <h4 class="text-[1.05rem] font-semibold">{nomeProduto(p, lingua)}</h4>
                       <span class="pontilhado" aria-hidden="true" />
                       {v ? (
-                        <span class="font-display text-lg font-semibold whitespace-nowrap text-cobre-forte">
+                        <span class="preco text-lg">
                           {v.texto}
                           {v.sufixo && <span class="text-sm font-medium">{v.sufixo}</span>}
                         </span>
@@ -129,8 +138,8 @@ function preco(p: Produto) {
       ))
     }
 
-    <div class="mt-12 flex flex-col gap-5 rounded-2xl bg-creme-escuro p-6 md:flex-row md:items-center md:justify-between md:p-8">
-      <div class="max-w-2xl text-sm text-tinta-suave">
+    <div class="mt-12 rounded-2xl bg-creme-escuro p-6 md:p-8">
+      <div class="text-sm text-tinta-suave">
         <p>
           <strong class="text-tinta">“{SOB_CONSULTA}”</strong> {t.ementa.notaSobConsulta}
         </p>
@@ -138,21 +147,11 @@ function preco(p: Produto) {
           embalagens.length > 0 && (
             <p class="mt-2">
               {t.ementa.sacos}:{' '}
-              {embalagens
-                .map(
-                  (p) =>
-                    `${nomeProduto(p, lingua).replace(/^Saco\s+|\s+bag$/gi, '').toLowerCase()} ${formatarPreco(precoPublicavel(p) as number, lingua)}`,
-                )
-                .join(' · ')}
-              .
+              {textoSacos}.
             </p>
           )
         }
       </div>
-      <a href={telHref} class="botao botao-cobre shrink-0">
-        <Icone nome="telefone" class="h-4 w-4" />
-        {t.ementa.ligar} {info.telefone_display}
-      </a>
     </div>
   </div>
 </section>
