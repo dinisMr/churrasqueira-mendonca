@@ -1,10 +1,32 @@
 ---
 import Icone from './Icone.astro';
+import { Image } from 'astro:assets';
 import { info, telHref, moradaLinha1 } from '../lib/catalogo';
+import { capa } from '../lib/fotos';
 ---
 
 <section id="topo" class="relative isolate overflow-hidden bg-carvao text-creme">
-  <!-- Brasas: fundo decorativo em CSS, sem imagens a descarregar. -->
+  {
+    /* Fotografia de capa (src/assets/fotos/capa.*), escurecida para manter o texto legível. */
+    capa && (
+      <>
+        <Image
+          src={capa.imagem}
+          alt=""
+          widths={[640, 960, 1280, 1920]}
+          sizes="100vw"
+          loading="eager"
+          fetchpriority="high"
+          class="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        <div
+          aria-hidden="true"
+          class="absolute inset-0 -z-20 bg-gradient-to-r from-carvao/95 via-carvao/80 to-carvao/45"
+        />
+      </>
+    )
+  }
+  <!-- Brasas: fundo decorativo em CSS. -->
   <div
     aria-hidden="true"
     class="absolute inset-0 -z-10"

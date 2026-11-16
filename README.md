@@ -81,6 +81,17 @@ Em **`src/data/estabelecimento.json`**:
   antes de publicar — ativa o `canonical`, o `og:url` e o URL nos dados
   estruturados.
 
+## Fotografias
+
+Coloque as imagens em `src/assets/fotos/`:
+
+- `capa.jpg` passa a ser o fundo da página inicial.
+- As restantes aparecem na secção "Galeria", por ordem alfabética do nome.
+- O texto alternativo de cada uma define-se em `src/data/fotos.json`
+  (`{ "01-frango.jpg": "Frangos a assar na brasa" }`).
+
+Sem fotografias na pasta, a galeria não aparece e a capa usa o fundo decorativo.
+
 ## Publicar no Cloudflare Pages
 
 Ainda nada foi publicado. Quando for altura:

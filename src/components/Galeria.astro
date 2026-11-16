@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import { galeria } from '../lib/fotos';
+---
+
+{
+  galeria.length > 0 && (
+    <section id="galeria" class="bg-creme-escuro py-16 md:py-24">
+      <div class="contentor">
+        <p class="sobretitulo text-cobre-forte">Galeria</p>
+        <h2 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Da nossa brasa</h2>
+        <ul class="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+          {galeria.map((f) => (
+            <li class="overflow-hidden rounded-2xl bg-linha">
+              <Image
+                src={f.imagem}
+                alt={f.alt}
+                widths={[320, 480, 720]}
+                sizes="(min-width: 1152px) 368px, (min-width: 768px) 33vw, 50vw"
+                width={720}
+                height={720}
+                fit="cover"
+                loading="lazy"
+                decoding="async"
+                class="aspect-square h-full w-full object-cover"
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
