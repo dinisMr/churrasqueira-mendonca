@@ -13,7 +13,7 @@ const t = textos[lingua];
 const destaques = [{ icone: 'chama' as const }, { icone: 'saco' as const }, { icone: 'relogio' as const }];
 ---
 
-<section id="sobre" class="bg-carvao py-16 text-creme md:py-24">
+<section id="sobre" class="madeira py-16 text-creme md:py-24">
   <div class="contentor grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
     <div>
       <p class="sobretitulo text-galo">{t.sobre.sobretitulo}</p>
@@ -31,7 +31,7 @@ const destaques = [{ icone: 'chama' as const }, { icone: 'saco' as const }, { ic
     <ul class="grid gap-4">
       {
         destaques.map((d, i) => (
-          <li class="flex gap-4 rounded-2xl border border-white/10 bg-carvao-suave p-5 md:p-6">
+          <li class="flex gap-4 rounded-2xl border border-white/10 bg-black/30 p-5 md:p-6">
             <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-galo text-carvao">
               <Icone nome={d.icone} class="h-5 w-5" />
             </span>

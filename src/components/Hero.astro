@@ -12,7 +12,7 @@ const { lingua } = Astro.props;
 const t = textos[lingua];
 ---
 
-<section id="topo" class="relative isolate overflow-hidden bg-carvao text-creme">
+<section id="topo" class="madeira relative isolate overflow-hidden text-creme">
   {
     /* Fotografia de capa (src/assets/fotos/capa.*), escurecida para manter o texto legível. */
     capa && (
@@ -38,18 +38,8 @@ const t = textos[lingua];
     aria-hidden="true"
     class="absolute inset-0 -z-10"
     style="background:
-      radial-gradient(60rem 28rem at 85% 110%, rgb(248 184 32 / 0.22), transparent 65%),
-      radial-gradient(34rem 20rem at 8% 105%, rgb(248 184 32 / 0.10), transparent 70%),
-      radial-gradient(40rem 30rem at 50% -20%, rgb(255 255 255 / 0.05), transparent 70%);"
-  >
-  </div>
-  <!-- Grelha -->
-  <div
-    aria-hidden="true"
-    class="absolute inset-x-0 bottom-0 -z-10 h-40 opacity-[0.13]"
-    style="background-image: repeating-linear-gradient(90deg, #f8f4eb 0 3px, transparent 3px 34px);
-      mask-image: linear-gradient(to top, #000, transparent);
-      -webkit-mask-image: linear-gradient(to top, #000, transparent);"
+      linear-gradient(180deg, rgb(20 12 7 / 0.55), rgb(20 12 7 / 0.15) 70%, transparent),
+      radial-gradient(60rem 26rem at 85% 110%, rgb(248 184 32 / 0.16), transparent 65%);"
   >
   </div>
 
