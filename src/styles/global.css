@@ -130,20 +130,17 @@
     transform: translateY(-0.35em);
   }
 
-  /* Madeira escura, como o fundo do logótipo: tábuas horizontais com veio subtil. */
-  .madeira {
-    background-color: #3a2416;
-    background-image:
-      repeating-linear-gradient(0deg, rgb(0 0 0 / 0.3) 0 2px, transparent 2px 58px),
-      repeating-linear-gradient(0deg, rgb(255 255 255 / 0.035) 0 1px, transparent 1px 7px),
-      linear-gradient(100deg, rgb(255 255 255 / 0.06), rgb(0 0 0 / 0.18));
-  }
-  /* Mesma madeira, sem as juntas das tábuas (para faixas estreitas como o cabeçalho). */
+  /* Fundo quase preto com veio de madeira muito subtil, como o fundo do logótipo.
+     O veio é ruído gerado por um SVG embutido (não há imagem a descarregar). */
+  .madeira,
   .madeira-lisa {
-    background-color: #2f1c11;
+    background-color: #1b1614;
     background-image:
-      repeating-linear-gradient(0deg, rgb(255 255 255 / 0.035) 0 1px, transparent 1px 7px),
-      linear-gradient(100deg, rgb(255 255 255 / 0.05), rgb(0 0 0 / 0.18));
+      linear-gradient(rgb(27 22 20 / 0.87), rgb(27 22 20 / 0.87)),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='320'%3E%3Cfilter id='g' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.005 0.45' numOctaves='4' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 0.92  0 0 0 0 0.84  1.7 0 0 0 -0.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23g%29'/%3E%3C/svg%3E");
+    background-size:
+      auto,
+      640px 320px;
   }
   .madeira .pontilhado {
     border-bottom-color: rgb(248 244 235 / 0.28);
