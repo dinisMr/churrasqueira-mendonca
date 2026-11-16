@@ -7,7 +7,7 @@ const ano = new Date().getFullYear();
 <footer class="bg-carvao py-12 text-creme">
   <div class="contentor flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
     <div>
-      <p class="font-display text-2xl font-semibold">{info.nome}</p>
+      <p class="font-display text-2xl font-semibold tracking-wide uppercase">{info.nome}</p>
       <address class="mt-2 text-sm text-creme/75 not-italic">
         {moradaLinha1}<br />
         {moradaLinha2}
@@ -15,8 +15,8 @@ const ano = new Date().getFullYear();
     </div>
     <ul class="flex flex-col gap-3 text-sm font-semibold">
       <li>
-        <a href={telHref} class="flex items-center gap-2 hover:text-brasa">
-          <Icone nome="telefone" class="h-4 w-4 text-brasa" />
+        <a href={telHref} class="flex items-center gap-2 hover:text-amarelo">
+          <Icone nome="telefone" class="h-4 w-4 text-amarelo" />
           {info.telefone_display}
         </a>
       </li>
@@ -25,9 +25,9 @@ const ano = new Date().getFullYear();
           href={info.instagram}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-2 hover:text-brasa"
+          class="flex items-center gap-2 hover:text-amarelo"
         >
-          <Icone nome="instagram" class="h-4 w-4 text-brasa" />
+          <Icone nome="instagram" class="h-4 w-4 text-amarelo" />
           Instagram
         </a>
       </li>
@@ -36,9 +36,9 @@ const ano = new Date().getFullYear();
           href={info.google_maps}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-2 hover:text-brasa"
+          class="flex items-center gap-2 hover:text-amarelo"
         >
-          <Icone nome="mapa" class="h-4 w-4 text-brasa" />
+          <Icone nome="mapa" class="h-4 w-4 text-amarelo" />
           Como chegar
         </a>
       </li>

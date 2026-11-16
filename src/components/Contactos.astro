@@ -10,22 +10,22 @@ const utilizadorInstagram =
 
 <section id="contactos" class="py-16 md:py-24">
   <div class="contentor">
-    <p class="sobretitulo text-cobre-forte">Contactos e localização</p>
-    <h2 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Onde estamos</h2>
+    <p class="sobretitulo text-vermelho">Contactos e localização</p>
+    <h2 class="mt-3 text-4xl font-semibold md:text-6xl">Onde estamos</h2>
 
     <div class="mt-10 grid gap-5 lg:grid-cols-3">
       <!-- Telefone -->
       <div class="flex flex-col rounded-2xl bg-carvao p-7 text-creme">
-        <Icone nome="telefone" class="h-6 w-6 text-brasa" />
+        <Icone nome="telefone" class="h-6 w-6 text-amarelo" />
         <h3 class="mt-4 text-2xl font-semibold">Telefone</h3>
         <p class="mt-1 text-creme/80">Informações e esclarecimentos.</p>
         <a
           href={telHref}
-          class="mt-4 font-display text-4xl font-semibold tracking-tight text-creme hover:text-brasa"
+          class="mt-4 font-display text-4xl font-semibold text-creme hover:text-amarelo"
         >
           {info.telefone_display}
         </a>
-        <a href={telHref} class="botao botao-cobre mt-6 self-start lg:mt-auto">
+        <a href={telHref} class="botao botao-principal mt-6 self-start lg:mt-auto">
           <Icone nome="telefone" class="h-4 w-4" />
           Telefonar agora
         </a>
@@ -33,7 +33,7 @@ const utilizadorInstagram =
 
       <!-- Morada -->
       <div class="flex flex-col rounded-2xl border border-linha bg-papel p-7">
-        <Icone nome="mapa" class="h-6 w-6 text-cobre-forte" />
+        <Icone nome="mapa" class="h-6 w-6 text-vermelho" />
         <h3 class="mt-4 text-2xl font-semibold">Morada</h3>
         <address class="mt-2 text-lg leading-snug not-italic">
           {moradaLinha1}<br />
@@ -55,7 +55,7 @@ const utilizadorInstagram =
       <div class="flex flex-col gap-6 rounded-2xl border border-linha bg-papel p-7">
         <div>
           <h3 class="flex items-center gap-2 text-xl font-semibold">
-            <Icone nome="relogio" class="h-5 w-5 text-cobre-forte" />
+            <Icone nome="relogio" class="h-5 w-5 text-vermelho" />
             Horário
           </h3>
           {
@@ -71,7 +71,7 @@ const utilizadorInstagram =
             ) : (
               <p class="mt-1 text-tinta-suave">
                 {info.horario.texto_provisorio}:{' '}
-                <a href={telHref} class="font-semibold text-cobre-forte underline underline-offset-4">
+                <a href={telHref} class="font-semibold text-vermelho underline underline-offset-4">
                   {info.telefone_display}
                 </a>
               </p>
@@ -83,7 +83,7 @@ const utilizadorInstagram =
           info.pagamentos.length > 0 && (
             <div>
               <h3 class="flex items-center gap-2 text-xl font-semibold">
-                <Icone nome="cartao" class="h-5 w-5 text-cobre-forte" />
+                <Icone nome="cartao" class="h-5 w-5 text-vermelho" />
                 Pagamento na loja
               </h3>
               <p class="mt-1 text-tinta-suave">{info.pagamentos.join(' · ')}</p>
@@ -93,14 +93,14 @@ const utilizadorInstagram =
 
         <div>
           <h3 class="flex items-center gap-2 text-xl font-semibold">
-            <Icone nome="instagram" class="h-5 w-5 text-cobre-forte" />
+            <Icone nome="instagram" class="h-5 w-5 text-vermelho" />
             Instagram
           </h3>
           <a
             href={info.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-1 inline-block font-semibold text-cobre-forte underline underline-offset-4"
+            class="mt-1 inline-block font-semibold text-vermelho underline underline-offset-4"
           >
             {utilizadorInstagram}
           </a>

@@ -17,43 +17,32 @@ import { capa } from '../lib/fotos';
           sizes="100vw"
           loading="eager"
           fetchpriority="high"
-          class="absolute inset-0 -z-20 h-full w-full object-cover"
+          class="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center]"
         />
         <div
           aria-hidden="true"
-          class="absolute inset-0 -z-20 bg-gradient-to-r from-carvao/95 via-carvao/80 to-carvao/45"
+          class="absolute inset-0 -z-20 bg-gradient-to-t from-carvao via-carvao/85 to-carvao/60 md:bg-gradient-to-r md:from-carvao md:via-carvao/85 md:to-carvao/25"
         />
       </>
     )
   }
-  <!-- Brasas: fundo decorativo em CSS. -->
-  <div
-    aria-hidden="true"
-    class="absolute inset-0 -z-10"
-    style="background:
-      radial-gradient(60rem 28rem at 85% 110%, rgb(187 91 50 / 0.55), transparent 65%),
-      radial-gradient(34rem 20rem at 8% 105%, rgb(229 138 85 / 0.22), transparent 70%),
-      radial-gradient(40rem 30rem at 50% -20%, rgb(255 255 255 / 0.05), transparent 70%);"
-  >
-  </div>
-  <!-- Grelha -->
-  <div
-    aria-hidden="true"
-    class="absolute inset-x-0 bottom-0 -z-10 h-40 opacity-[0.13]"
-    style="background-image: repeating-linear-gradient(90deg, #f8f4eb 0 3px, transparent 3px 34px);
-      mask-image: linear-gradient(to top, #000, transparent);
-      -webkit-mask-image: linear-gradient(to top, #000, transparent);"
-  >
-  </div>
+  {
+    !capa && (
+      <div
+        aria-hidden="true"
+        class="madeira absolute inset-0 -z-10"
+      />
+    )
+  }
 
   <div class="contentor py-20 md:py-32">
-    <p class="sobretitulo flex items-center gap-3 text-brasa">
-      <span class="h-px w-8 bg-brasa"></span>
+    <p class="sobretitulo flex items-center gap-3 text-amarelo">
+      <span class="h-px w-8 bg-amarelo"></span>
       {info.morada.localidade} · {info.morada.concelho}
     </p>
 
-    <h1 class="mt-5 max-w-3xl text-[2.6rem] leading-[1.05] font-semibold tracking-tight sm:text-6xl md:text-7xl">
-      O sabor do churrasco, <span class="text-brasa">perto de si</span>
+    <h1 class="mt-5 max-w-3xl text-5xl leading-[1.05] font-bold sm:text-7xl md:text-8xl">
+      O sabor do churrasco, <span class="text-amarelo">perto de si</span>
     </h1>
 
     <p class="mt-6 max-w-xl text-lg text-creme/85">
@@ -62,7 +51,7 @@ import { capa } from '../lib/fotos';
     </p>
 
     <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-      <a href="#ementa" class="botao botao-cobre">
+      <a href="#ementa" class="botao botao-principal">
         Ver ementa
         <Icone nome="seta" class="h-4 w-4" />
       </a>
@@ -74,17 +63,18 @@ import { capa } from '../lib/fotos';
 
     <ul class="mt-12 flex flex-col gap-x-8 gap-y-3 text-sm text-creme/85 sm:flex-row sm:flex-wrap">
       <li class="flex items-center gap-2">
-        <Icone nome="saco" class="h-4 w-4 text-brasa" />
+        <Icone nome="saco" class="h-4 w-4 text-amarelo" />
         Take-away
       </li>
       <li class="flex items-center gap-2">
-        <Icone nome="mapa" class="h-4 w-4 text-brasa" />
+        <Icone nome="mapa" class="h-4 w-4 text-amarelo" />
         {moradaLinha1}, {info.morada.localidade}
       </li>
       <li class="flex items-center gap-2">
-        <Icone nome="telefone" class="h-4 w-4 text-brasa" />
+        <Icone nome="telefone" class="h-4 w-4 text-amarelo" />
         {info.telefone_display}
       </li>
     </ul>
   </div>
 </section>
+<div class="tijolo" aria-hidden="true"></div>

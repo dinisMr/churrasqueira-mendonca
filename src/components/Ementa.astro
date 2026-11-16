@@ -17,12 +17,18 @@ function preco(p: Produto) {
   const valor = precoPublicavel(p);
   return valor === null ? null : { texto: formatarPreco(valor), sufixo: sufixoUnidade(p) };
 }
+
+/** "Menu Familiar de Frango" → rótulo "Menu Familiar" + título "Frango", como no painel da loja. */
+function partesMenu(nome: string) {
+  const m = nome.match(/^(Menu\s+\S+)\s+de\s+(.+)$/i);
+  return m ? { rotulo: m[1] as string, titulo: m[2] as string } : { rotulo: '', titulo: nome };
+}
 ---
 
 <section id="ementa" class="py-16 md:py-24">
   <div class="contentor">
-    <p class="sobretitulo text-cobre-forte">Ementa</p>
-    <h2 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Preços de balcão</h2>
+    <p class="sobretitulo text-vermelho">Ementa</p>
+    <h2 class="mt-3 text-4xl font-semibold md:text-6xl">Preçário de balcão</h2>
     <p class="mt-4 max-w-2xl text-tinta-suave">
       Valores praticados na loja, com IVA incluído. Os preços e a disponibilidade podem mudar sem
       aviso — em caso de dúvida, ligue-nos.
@@ -40,7 +46,7 @@ function preco(p: Produto) {
           <li class="shrink-0">
             <a
               href={`#${c.id}`}
-              class="block rounded-full border border-linha bg-papel px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors hover:border-cobre-forte hover:text-cobre-forte"
+              class="block rounded-full border border-tinta/25 bg-papel px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors hover:border-tinta hover:bg-tinta hover:text-white"
             >
               {c.nome}
             </a>
@@ -52,70 +58,87 @@ function preco(p: Produto) {
 
   <div class="contentor">
     {
-      ementa.map((c) => (
-        <section id={c.id} aria-labelledby={`${c.id}-titulo`} class="pt-14">
-          <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-2 border-tinta pb-3">
-            <h3 id={`${c.id}-titulo`} class="text-2xl font-semibold tracking-tight md:text-3xl">
-              {c.nome}
-            </h3>
-            {c.nota && <p class="text-sm text-tinta-suave">{c.nota}</p>}
-          </div>
+      ementa.map((c) => {
+        const singular = /individua/i.test(c.nome);
+        return (
+          <section id={c.id} aria-labelledby={`${c.id}-titulo`} class="pt-12">
+            <div class="barra-titulo flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 rounded-md px-4 py-2.5 md:px-5">
+              <h3 id={`${c.id}-titulo`} class="text-lg font-medium md:text-xl">
+                {c.nome}
+              </h3>
+              {c.nota && <p class="text-sm tracking-normal text-white/75">{c.nota}</p>}
+            </div>
 
-          {c.formato === 'cartoes' ? (
-            <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {c.produtos.map((p) => {
-                const v = preco(p);
-                return (
-                  <li class="flex flex-col rounded-2xl border border-linha bg-papel p-5">
-                    <h4 class="font-display text-xl leading-snug font-semibold">{p.nome}</h4>
-                    {p.descricao && (
-                      <p class="mt-2 flex-1 text-sm text-tinta-suave">{p.descricao}</p>
-                    )}
-                    <p class="mt-5 border-t border-linha pt-3">
-                      {v ? (
-                        <span class="font-display text-2xl font-semibold text-cobre-forte">
-                          {v.texto}
-                          {v.sufixo && <span class="text-base font-medium">{v.sufixo}</span>}
-                        </span>
-                      ) : (
-                        <span class="text-sm font-semibold text-tinta-suave">{SOB_CONSULTA}</span>
+            {c.formato === 'cartoes' ? (
+              <ul class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {c.produtos.map((p) => {
+                  const v = preco(p);
+                  const { rotulo, titulo } = partesMenu(p.nome);
+                  return (
+                    <li class="madeira flex flex-col rounded-xl p-5 text-white shadow-md">
+                      <h4 class="leading-none">
+                        {rotulo && (
+                          <span
+                            class:list={[
+                              'mb-2 flex items-center gap-2 text-sm font-medium tracking-[0.14em]',
+                              singular ? 'text-verde' : 'text-vermelho-vivo',
+                            ]}
+                          >
+                            <span class="h-px w-4 bg-current" aria-hidden="true" />
+                            {rotulo}
+                          </span>
+                        )}
+                        <span class="block text-3xl font-semibold">{titulo}</span>
+                      </h4>
+                      {p.descricao && (
+                        <p class="mt-3 flex-1 text-sm text-white/80">{p.descricao}</p>
                       )}
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <ul class="mt-2 grid gap-x-14 md:grid-cols-2">
-              {c.produtos.map((p) => {
-                const v = preco(p);
-                return (
-                  <li class="border-b border-linha py-4">
-                    <div class="flex items-baseline gap-3">
-                      <h4 class="text-[1.05rem] font-semibold">{p.nome}</h4>
-                      <span class="pontilhado" aria-hidden="true" />
-                      {v ? (
-                        <span class="font-display text-lg font-semibold whitespace-nowrap text-cobre-forte">
-                          {v.texto}
-                          {v.sufixo && <span class="text-sm font-medium">{v.sufixo}</span>}
-                        </span>
-                      ) : (
-                        <span class="text-sm font-semibold whitespace-nowrap text-tinta-suave">
-                          {SOB_CONSULTA}
-                        </span>
-                      )}
-                    </div>
-                    {p.descricao && <p class="mt-1 text-sm text-tinta-suave">{p.descricao}</p>}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-        </section>
-      ))
+                      <p class="mt-5">
+                        {v ? (
+                          <span class="etiqueta-preco etiqueta-oval text-2xl">
+                            {v.texto}
+                            {v.sufixo && <span class="text-base">{v.sufixo}</span>}
+                          </span>
+                        ) : (
+                          <span class="text-sm font-semibold text-white/75">{SOB_CONSULTA}</span>
+                        )}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <ul class="grid gap-x-14 md:grid-cols-2">
+                {c.produtos.map((p) => {
+                  const v = preco(p);
+                  return (
+                    <li class="border-b border-linha py-3.5">
+                      <div class="flex items-baseline gap-3">
+                        <h4 class="text-lg font-medium">{p.nome}</h4>
+                        <span class="pontilhado" aria-hidden="true" />
+                        {v ? (
+                          <span class="etiqueta-preco text-lg">
+                            {v.texto}
+                            {v.sufixo && <span class="text-sm">{v.sufixo}</span>}
+                          </span>
+                        ) : (
+                          <span class="text-sm font-semibold whitespace-nowrap text-tinta-suave">
+                            {SOB_CONSULTA}
+                          </span>
+                        )}
+                      </div>
+                      {p.descricao && <p class="mt-1 text-sm text-tinta-suave">{p.descricao}</p>}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </section>
+        );
+      })
     }
 
-    <div class="mt-12 flex flex-col gap-5 rounded-2xl bg-creme-escuro p-6 md:flex-row md:items-center md:justify-between md:p-8">
+    <div class="mt-12 flex flex-col gap-5 rounded-xl bg-creme-escuro p-6 md:flex-row md:items-center md:justify-between md:p-8">
       <div class="max-w-2xl text-sm text-tinta-suave">
         <p>
           <strong class="text-tinta">“{SOB_CONSULTA}”</strong> indica artigos cujo valor confirmamos
@@ -136,9 +159,9 @@ function preco(p: Produto) {
           )
         }
       </div>
-      <a href={telHref} class="botao botao-cobre shrink-0">
+      <a href={telHref} class="botao botao-contorno shrink-0">
         <Icone nome="telefone" class="h-4 w-4" />
-        Ligar {info.telefone_display}
+        {info.telefone_display}
       </a>
     </div>
   </div>
