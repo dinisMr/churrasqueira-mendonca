@@ -476,6 +476,20 @@
     "preco_alternativo_foto_eur": null
   },
   {
+    "id": "p035",
+    "categoria": "Produtos embalados",
+    "nome": "Queijo de ovelha",
+    "nome_en": "Sheep's cheese",
+    "preco_balcao_eur": 2.8,
+    "unidade": "peça",
+    "descricao": "",
+    "descricao_en": "",
+    "fonte_fotografia": "foto_04_montra.jpeg",
+    "estado_verificacao": "confirmado",
+    "notas": "Preço confirmado pelo responsável.",
+    "preco_alternativo_foto_eur": null
+  },
+  {
     "id": "p036",
     "categoria": "Produtos embalados",
     "nome": "Azeitonas temperadas",
@@ -487,6 +501,48 @@
     "fonte_fotografia": "foto_04_montra.jpeg",
     "estado_verificacao": "sem_preco_confirmado",
     "notas": "Existem etiquetas mas valor não totalmente seguro.",
+    "preco_alternativo_foto_eur": null
+  },
+  {
+    "id": "p037",
+    "categoria": "Produtos embalados",
+    "nome": "Maionese Calvé",
+    "nome_en": "Calvé mayonnaise",
+    "preco_balcao_eur": 2.5,
+    "unidade": "unidade",
+    "descricao": "",
+    "descricao_en": "",
+    "fonte_fotografia": "foto_04_montra.jpeg",
+    "estado_verificacao": "confirmado",
+    "notas": "Preço confirmado pelo responsável.",
+    "preco_alternativo_foto_eur": null
+  },
+  {
+    "id": "p038",
+    "categoria": "Produtos embalados",
+    "nome": "Ketchup Calvé",
+    "nome_en": "Calvé ketchup",
+    "preco_balcao_eur": 2.5,
+    "unidade": "unidade",
+    "descricao": "",
+    "descricao_en": "",
+    "fonte_fotografia": "foto_04_montra.jpeg",
+    "estado_verificacao": "confirmado",
+    "notas": "Preço confirmado pelo responsável.",
+    "preco_alternativo_foto_eur": null
+  },
+  {
+    "id": "p039",
+    "categoria": "Produtos embalados",
+    "nome": "Pickles",
+    "nome_en": "Pickles",
+    "preco_balcao_eur": 2.5,
+    "unidade": "unidade",
+    "descricao": "",
+    "descricao_en": "",
+    "fonte_fotografia": "foto_04_montra.jpeg",
+    "estado_verificacao": "confirmado",
+    "notas": "Preço confirmado pelo responsável.",
     "preco_alternativo_foto_eur": null
   },
   {
