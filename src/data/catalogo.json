@@ -494,13 +494,13 @@
     "categoria": "Produtos embalados",
     "nome": "Azeitonas temperadas",
     "nome_en": "Marinated olives",
-    "preco_balcao_eur": null,
+    "preco_balcao_eur": 2.5,
     "unidade": "unidade",
     "descricao": "",
     "descricao_en": "",
     "fonte_fotografia": "foto_04_montra.jpeg",
-    "estado_verificacao": "sem_preco_confirmado",
-    "notas": "Existem etiquetas mas valor não totalmente seguro.",
+    "estado_verificacao": "confirmado",
+    "notas": "Preço confirmado pelo responsável.",
     "preco_alternativo_foto_eur": null
   },
   {
