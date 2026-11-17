@@ -130,14 +130,14 @@
     "categoria": "Grelhados e pratos",
     "nome": "Dose de 3 salsichas",
     "nome_en": "Portion of 3 sausages",
-    "preco_balcao_eur": 4.6,
+    "preco_balcao_eur": 4.5,
     "unidade": "unidade",
     "descricao": "3 salsichas grelhadas.",
     "descricao_en": "3 grilled sausages.",
     "fonte_fotografia": "foto_02_preçario_geral.jpeg",
-    "estado_verificacao": "preco_divergente",
-    "notas": "Banner de promoção da foto_03 indica 4,50 € para 3 salsichas.",
-    "preco_alternativo_foto_eur": 4.5
+    "estado_verificacao": "confirmado",
+    "notas": "Preço confirmado pelo responsável.",
+    "preco_alternativo_foto_eur": null
   },
   {
     "id": "p011",
@@ -163,8 +163,8 @@
     "descricao": "Entrecosto grelhado, vendido ao peso.",
     "descricao_en": "Grilled pork ribs, sold by weight.",
     "fonte_fotografia": "foto_02_preçario_geral.jpeg",
-    "estado_verificacao": "a_confirmar",
-    "notas": "Reflexo no dígito do preçário; leitura provável 19,90 €. Confirmar antes de publicação.",
+    "estado_verificacao": "confirmado",
+    "notas": "Preço confirmado pelo responsável.",
     "preco_alternativo_foto_eur": null
   },
   {
@@ -303,9 +303,9 @@
     "descricao": "",
     "descricao_en": "",
     "fonte_fotografia": "foto_02_preçario_geral.jpeg / foto_03_menus.jpeg",
-    "estado_verificacao": "preco_divergente",
-    "notas": "Preçário: 29,90 €/kg. Painel de promoção: 29,80 €/kg.",
-    "preco_alternativo_foto_eur": 29.8
+    "estado_verificacao": "confirmado",
+    "notas": "Preço confirmado pelo responsável.",
+    "preco_alternativo_foto_eur": null
   },
   {
     "id": "p023",
