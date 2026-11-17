@@ -9,8 +9,8 @@
   --color-papel: #fffdf8;
   /* Dourado do logótipo (faixa inferior, cor medida na imagem): a única cor de destaque do site. */
   --color-galo: #f8b820;
-  /* Vermelho da crista do galo (cor medida no logótipo). */
-  --color-crista: #dd1923;
+  /* Vermelho tijolo / brasa do botão "Encomendar". */
+  --color-crista: #b3201f;
   --color-verde: #3f6147;
   --color-tinta: #2a2623;
   --color-tinta-suave: #5c544d;
@@ -120,7 +120,7 @@
     color: #fff;
   }
   .botao-vermelho:hover {
-    background-color: #b8121b;
+    background-color: #961a19;
   }
   .botao-contorno {
     border: 1.5px solid var(--color-tinta);
