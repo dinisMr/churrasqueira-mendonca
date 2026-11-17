@@ -1,6 +1,5 @@
 ---
 import Icone from './Icone.astro';
-import MarcaEntrega from './MarcaEntrega.astro';
 import { info, telHref, moradaLinha1, moradaLinha2, horario, textoHoras } from '../lib/catalogo';
 import { textos, nomeDia, nomePagamento, type Lingua } from '../i18n/textos';
 
@@ -11,7 +10,6 @@ const { lingua } = Astro.props;
 const t = textos[lingua];
 
 const horarioConfirmado = horario.length > 0;
-const entrega = info.plataformas_entrega;
 const utilizadorInstagram =
   '@' + info.instagram.replace(/\/+$/, '').split('/').pop();
 ---
@@ -116,39 +114,5 @@ const utilizadorInstagram =
       </div>
     </div>
 
-    {
-      entrega.mostrar && entrega.lista.length > 0 && (
-        <div
-          id="encomendar"
-          class="madeira mt-5 flex scroll-mt-28 flex-col gap-6 rounded-2xl p-7 text-creme ring-2 ring-galo md:flex-row md:items-center md:justify-between md:p-9"
-        >
-          <div class="max-w-xl">
-            <h3 class="flex items-center gap-3 text-2xl font-semibold md:text-3xl">
-              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-galo text-carvao">
-                <Icone nome="saco" class="h-5 w-5" />
-              </span>
-              {t.contactos.entregaForte}
-            </h3>
-            <p class="mt-3 text-creme/80">{t.contactos.entregaTexto}</p>
-          </div>
-          <ul class="flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
-            {entrega.lista.map((p) => (
-              <li>
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="botao-entrega"
-                  aria-label={`${p.nome} (${t.contactos.abreNovaJanela})`}
-                >
-                  <MarcaEntrega nome={p.nome} />
-                  <Icone nome="externo" class="h-4 w-4 opacity-70" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
   </div>
 </section>

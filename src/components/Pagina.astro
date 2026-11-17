@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Cabecalho from './Cabecalho.astro';
 import Hero from './Hero.astro';
 import Ementa from './Ementa.astro';
+import Encomendar from './Encomendar.astro';
 import Galeria from './Galeria.astro';
 import Sobre from './Sobre.astro';
 import Contactos from './Contactos.astro';
@@ -25,6 +26,7 @@ const descricao = t.meta.descricao(info.morada.rua, info.morada.localidade, info
   <main id="conteudo">
     <Hero lingua={lingua} />
     <Ementa lingua={lingua} />
+    <Encomendar lingua={lingua} />
     <Galeria lingua={lingua} />
     <Sobre lingua={lingua} />
     <Contactos lingua={lingua} />
