@@ -154,6 +154,46 @@
     white-space: nowrap;
   }
 
+  /* Botões das plataformas de entrega, com as cores de cada marca. */
+  .botao-entrega {
+    display: inline-flex;
+    width: 100%;
+    min-height: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 999px;
+    background-color: #fff;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .botao-entrega:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgb(0 0 0 / 0.35);
+  }
+  .botao-entrega:has(.marca-uber) {
+    background-color: #000;
+    color: #fff;
+  }
+  .botao-entrega:has(.marca-glovo) {
+    background-color: #ffc244;
+    color: #00a082;
+  }
+  .marca {
+    display: inline-flex;
+    gap: 0.3em;
+    font-family: var(--font-sans);
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .marca-glovo {
+    font-size: 1.6rem;
+    letter-spacing: -0.04em;
+  }
+
   .sem-barra {
     scrollbar-width: none;
   }

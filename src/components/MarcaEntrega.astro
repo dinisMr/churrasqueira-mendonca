@@ -1,0 +1,27 @@
+---
+/**
+ * Marca da plataforma de entrega, escrita com as cores de cada uma.
+ * Para usar os logótipos oficiais, troque este conteúdo por <img> com os
+ * ficheiros dos kits de marca da Uber Eats e da Glovo.
+ */
+interface Props {
+  nome: string;
+}
+const { nome } = Astro.props;
+const chave = nome.toLowerCase().replace(/\s+/g, '');
+---
+
+{
+  chave === 'ubereats' ? (
+    <span class="marca marca-uber" aria-label="Uber Eats">
+      <span>Uber</span>
+      <span class="text-[#06c167]">Eats</span>
+    </span>
+  ) : chave === 'glovo' ? (
+    <span class="marca marca-glovo" aria-label="Glovo">
+      glovo
+    </span>
+  ) : (
+    <span class="marca">{nome}</span>
+  )
+}

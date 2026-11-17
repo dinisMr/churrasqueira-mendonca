@@ -34,7 +34,7 @@ const pt = {
     texto: (nome: string) =>
       `Frango no churrasco, entrecosto, choco frito e menus completos para levar para casa, na ${nome}.`,
     verEmenta: 'Ver ementa',
-    contactos: 'Localização',
+    encomendar: 'Encomendar',
     takeaway: 'Take-away',
   },
   ementa: {
@@ -82,9 +82,10 @@ const pt = {
     horarioProvisorio: 'Consulte-nos pelo telefone',
     encerrado: 'Encerrado',
     pagamento: 'Pagamento na loja',
-    entregaForte: 'Prefere receber em casa?',
+    entregaForte: 'Encomende para entrega',
     entregaTexto:
-      'Também estamos nas plataformas de entrega. Os preços e a ementa nessas plataformas são diferentes dos de balcão.',
+      'Peça a nossa comida em casa pela Uber Eats ou pela Glovo. Os preços e a ementa nessas plataformas são diferentes dos de balcão.',
+    abreNovaJanela: 'abre numa nova janela',
   },
   rodape: {
     comoChegar: 'Como chegar',
@@ -117,7 +118,7 @@ const en: typeof pt = {
     texto: (nome) =>
       `Barbecued chicken, pork ribs, fried cuttlefish and complete menus to take home, at ${nome}.`,
     verEmenta: 'See the menu',
-    contactos: 'Location',
+    encomendar: 'Order',
     takeaway: 'Takeaway',
   },
   ementa: {
@@ -165,9 +166,10 @@ const en: typeof pt = {
     horarioProvisorio: 'Please call us',
     encerrado: 'Closed',
     pagamento: 'Payment in store',
-    entregaForte: 'Prefer delivery?',
+    entregaForte: 'Order for delivery',
     entregaTexto:
-      'We are also on delivery platforms. Prices and the menu on those platforms differ from the counter ones.',
+      'Get our food delivered through Uber Eats or Glovo. Prices and the menu on those platforms differ from the counter ones.',
+    abreNovaJanela: 'opens in a new window',
   },
   rodape: {
     comoChegar: 'Directions',
